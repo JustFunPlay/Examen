@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance;
-    //player 1 character
+    public Character Player1;
     //player 2 character
     InputType player1Input;
     InputType player2Input;
@@ -102,40 +102,37 @@ public class InputManager : MonoBehaviour
         switch(player1Input)
         {
             case InputType.WASD:
-                wasdMoveInteraction.started += P1Move;
-                wasdMoveInteraction.canceled += P1Move;
                 wasdMoveInteraction.performed += P1Move;
+                wasdMoveInteraction.canceled += P1Move;
                 wasdMoveInteraction.Enable();
-                wasdJumpInteraction.started += P1Jump;
+                wasdJumpInteraction.performed += P1Jump;
                 wasdJumpInteraction.Enable();
-                wasdLightAttackInteraction.started += P1LightAttack;
+                wasdLightAttackInteraction.performed += P1LightAttack;
                 wasdLightAttackInteraction.Enable();
-                wasdHeavyAttackInteraction.started += P1HeavyAttack;
+                wasdHeavyAttackInteraction.performed += P1HeavyAttack;
                 wasdHeavyAttackInteraction.Enable();
                 Debug.Log("WASD has been bound to player 1");
                 break;
             case InputType.ArrowKeys:
-                arrowKeyMoveInteraction.started += P1Move;
-                arrowKeyMoveInteraction.canceled += P1Move;
                 arrowKeyMoveInteraction.performed += P1Move;
+                arrowKeyMoveInteraction.canceled += P1Move;
                 arrowKeyMoveInteraction.Enable();
-                arrowKeyJumpInteraction.started += P1Jump;
+                arrowKeyJumpInteraction.performed += P1Jump;
                 arrowKeyJumpInteraction.Enable();
-                arrowKeyLightAttackInteraction.started += P1LightAttack;
+                arrowKeyLightAttackInteraction.performed += P1LightAttack;
                 arrowKeyLightAttackInteraction.Enable();
-                arrowKeyHeavyAttackInteraction.started += P1HeavyAttack;
+                arrowKeyHeavyAttackInteraction.performed += P1HeavyAttack;
                 arrowKeyHeavyAttackInteraction.Enable();
                 break;
             case InputType.Controller:
-                controllerMoveInteraction.started += P1Move;
-                controllerMoveInteraction.canceled += P1Move;
                 controllerMoveInteraction.performed += P1Move;
+                controllerMoveInteraction.canceled += P1Move;
                 controllerMoveInteraction.Enable();
-                controllerJumpInteraction.started += P1Jump;
+                controllerJumpInteraction.performed += P1Jump;
                 controllerJumpInteraction.Enable();
-                controllerLightAttackInteraction.started += P1LightAttack;
+                controllerLightAttackInteraction.performed += P1LightAttack;
                 controllerLightAttackInteraction.Enable();
-                controllerHeavyAttackInteraction.started += P1HeavyAttack;
+                controllerHeavyAttackInteraction.performed += P1HeavyAttack;
                 controllerHeavyAttackInteraction.Enable();
                 break;
         }
@@ -146,39 +143,36 @@ public class InputManager : MonoBehaviour
         switch (player1Input)
         {
             case InputType.WASD:
-                wasdMoveInteraction.started -= P1Move;
-                wasdMoveInteraction.canceled -= P1Move;
                 wasdMoveInteraction.performed -= P1Move;
+                wasdMoveInteraction.canceled -= P1Move;
                 wasdMoveInteraction.Disable();
-                wasdJumpInteraction.started -= P1Jump;
+                wasdJumpInteraction.performed -= P1Jump;
                 wasdJumpInteraction.Disable();
-                wasdLightAttackInteraction.started -= P1LightAttack;
+                wasdLightAttackInteraction.performed -= P1LightAttack;
                 wasdLightAttackInteraction.Disable();
-                wasdHeavyAttackInteraction.started -= P1HeavyAttack;
+                wasdHeavyAttackInteraction.performed -= P1HeavyAttack;
                 wasdHeavyAttackInteraction.Disable();
                 break;
             case InputType.ArrowKeys:
-                arrowKeyMoveInteraction.started -= P1Move;
-                arrowKeyMoveInteraction.canceled -= P1Move;
                 arrowKeyMoveInteraction.performed -= P1Move;
+                arrowKeyMoveInteraction.canceled -= P1Move;
                 arrowKeyMoveInteraction.Disable();
-                arrowKeyJumpInteraction.started -= P1Jump;
+                arrowKeyJumpInteraction.performed -= P1Jump;
                 arrowKeyJumpInteraction.Disable();
-                arrowKeyLightAttackInteraction.started -= P1LightAttack;
+                arrowKeyLightAttackInteraction.performed -= P1LightAttack;
                 arrowKeyLightAttackInteraction.Disable();
-                arrowKeyHeavyAttackInteraction.started -= P1HeavyAttack;
+                arrowKeyHeavyAttackInteraction.performed -= P1HeavyAttack;
                 arrowKeyHeavyAttackInteraction.Disable();
                 break;
             case InputType.Controller:
-                controllerMoveInteraction.started -= P1Move;
-                controllerMoveInteraction.canceled -= P1Move;
                 controllerMoveInteraction.performed -= P1Move;
+                controllerMoveInteraction.canceled -= P1Move;
                 controllerMoveInteraction.Disable();
-                controllerJumpInteraction.started -= P1Jump;
+                controllerJumpInteraction.performed -= P1Jump;
                 controllerJumpInteraction.Disable();
-                controllerLightAttackInteraction.started -= P1LightAttack;
+                controllerLightAttackInteraction.performed -= P1LightAttack;
                 controllerLightAttackInteraction.Disable();
-                controllerHeavyAttackInteraction.started -= P1HeavyAttack;
+                controllerHeavyAttackInteraction.performed -= P1HeavyAttack;
                 controllerHeavyAttackInteraction.Disable();
                 break;
         }
@@ -187,10 +181,14 @@ public class InputManager : MonoBehaviour
     private void P1Move(InputAction.CallbackContext callbackContext)
     {
         Debug.Log($"Player 1 moveValue: {callbackContext.ReadValue<Vector2>()}");
+        if (Player1 != null)
+            Player1.Move(callbackContext.ReadValue<Vector2>());
     }
     private void P1Jump(InputAction.CallbackContext callbackContext)
     {
         Debug.Log("Player 1 jumped");
+        if (Player1 != null)
+            Player1.Jump();
     }
     private void P1LightAttack(InputAction.CallbackContext callbackContext)
     {
