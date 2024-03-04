@@ -590,6 +590,7 @@ MonoBehaviour:
   ButtonClick: {fileID: 137521497}
   AudioMixer: {fileID: 24100000, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20, type: 2}
   ResolutionsDropdown: {fileID: 1560563730}
+  PostProcessVolume: {fileID: 1068085655}
 --- !u!82 &137521497
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4505,7 +4506,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Disable filmgrain
+  m_text: Enable filmgrain
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6b3ce6442ed4e6b439040acb84d53c9d, type: 2}
   m_sharedMaterial: {fileID: 125302319942922119, guid: 6b3ce6442ed4e6b439040acb84d53c9d,
@@ -5506,7 +5507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1068085655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10125,7 +10126,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 137521496}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
+        m_MethodName: DisableFilmgrain
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1838807187
 GameObject:
@@ -12176,6 +12189,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1801537847}
   - {fileID: 1800679820}
-  - {fileID: 1068085656}
   - {fileID: 137521495}
+  - {fileID: 1068085656}
   - {fileID: 430010004}
