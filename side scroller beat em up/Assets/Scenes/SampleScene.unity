@@ -156,11 +156,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d5d231788da9b640af443231d2ee279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  lives: 0
+  health: 100
+  lives: 3
   score: 0
   movementSpeed: 15
   animator: {fileID: 0}
+  currentCombo: 
+  comboActions:
+  - ComboUnit: 0
+    Damage: 10
+    AttackTime: 0.4
+    FollowUpActions:
+    - ComboUnit: 0
+      Damage: 12
+      AttackTime: 0.4
+      FollowUpActions:
+      - ComboUnit: 0
+        Damage: 18
+        AttackTime: 0.5
+        FollowUpActions: []
+  - ComboUnit: 1
+    Damage: 17
+    AttackTime: 0.6
+    FollowUpActions:
+    - ComboUnit: 1
+      Damage: 20
+      AttackTime: 0.7
+      FollowUpActions:
+      - ComboUnit: 1
+        Damage: 33
+        AttackTime: 0.9
+        FollowUpActions: []
+  aerialCombos:
+  - ComboUnit: 0
+    Damage: 15
+    AttackTime: 0.5
+    FollowUpActions: []
+  - ComboUnit: 1
+    Damage: 20
+    AttackTime: 0.75
+    FollowUpActions: []
 --- !u!136 &162565203
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -275,7 +310,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &234385244
 GameObject:
@@ -743,6 +778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Characters:
   - {fileID: 162565202}
+  togleLock: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0

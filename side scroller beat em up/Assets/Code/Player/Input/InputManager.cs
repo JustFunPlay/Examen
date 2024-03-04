@@ -192,12 +192,15 @@ public class InputManager : MonoBehaviour
     }
     private void P1LightAttack(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("Player 1 performed light attack");
+        //Debug.Log("Player 1 performed light attack");
+        if (Player1 != null)
+            Player1.Attack(AttackType.Light);
     }
     private void P1HeavyAttack(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("Player 1 performed heavy attack");
-
+        //Debug.Log("Player 1 performed heavy attack");
+        if (Player1 != null)
+            Player1.Attack(AttackType.Heavy);
     }
 
 }
