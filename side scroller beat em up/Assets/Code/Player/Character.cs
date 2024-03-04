@@ -15,7 +15,7 @@ public class Character : MonoBehaviour
     private Rigidbody rb;
     Vector2 moveVector;
     private float leftEdge, rightEdge;
-    [SerializeField] private List<AttackType> currentCombo = new List<AttackType>();
+    private List<AttackType> currentCombo = new List<AttackType>();
     [SerializeField] private ComboAction[] comboActions;
     [SerializeField] private ComboAction[] aerialCombos;
 
@@ -157,7 +157,8 @@ public class Character : MonoBehaviour
             }
             if (activeCombo != null)
             {
-                Collider[] enemyColliders = Physics.OverlapSphere(transform.position + transform.forward, 0.5f);
+                Collider[] enemyColliders = Physics.OverlapCapsule(transform.TransformPoint(activeCombo.HitboxStart), transform.TransformPoint(activeCombo.HitboxEnd), activeCombo.HitboxRadius);
+                Debug.DrawLine(transform.TransformPoint(activeCombo.HitboxStart), transform.TransformPoint(activeCombo.HitboxEnd), Color.red, activeCombo.AttackTime);
                 foreach (Collider collider in enemyColliders)
                 {
                     if (collider.TryGetComponent<EnemyBase>(out EnemyBase enemy))
@@ -209,6 +210,8 @@ public class ComboAction
     public AttackType ComboUnit;
     public int Damage;
     public float AttackTime;
+    public Vector3 HitboxStart, HitboxEnd;
+    public float HitboxRadius = 0.5f;
     public ComboAction[] FollowUpActions;
 }
 
