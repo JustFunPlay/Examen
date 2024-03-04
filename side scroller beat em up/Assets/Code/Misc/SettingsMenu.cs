@@ -27,8 +27,7 @@ public class SettingsMenu : MonoBehaviour
 
     void Start()
     {
-        //brightness.TryGetSettings(out exposure);
-
+        //isDisabled.isOn = false;
 
         resolutions = Screen.resolutions;
 
