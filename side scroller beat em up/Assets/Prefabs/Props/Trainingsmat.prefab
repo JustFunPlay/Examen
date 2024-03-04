@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8532678055104333118}
   - component: {fileID: 5139913823009913319}
   m_Layer: 0
-  m_Name: m_Trainingsmat
+  m_Name: Trainingsmat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
