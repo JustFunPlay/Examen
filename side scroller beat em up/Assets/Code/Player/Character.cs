@@ -15,7 +15,7 @@ public class Character : MonoBehaviour
     private Rigidbody rb;
     Vector2 moveVector;
     private float leftEdge, rightEdge;
-    [SerializeField] private List<AttackType> currentCombo = new List<AttackType>();
+    private List<AttackType> currentCombo = new List<AttackType>();
     [SerializeField] private ComboAction[] comboActions;
     [SerializeField] private ComboAction[] aerialCombos;
 
@@ -157,6 +157,16 @@ public class Character : MonoBehaviour
             }
             if (activeCombo != null)
             {
+                Collider[] enemyColliders = Physics.OverlapCapsule(transform.TransformPoint(activeCombo.HitboxStart), transform.TransformPoint(activeCombo.HitboxEnd), activeCombo.HitboxRadius);
+                Debug.DrawLine(transform.TransformPoint(activeCombo.HitboxStart), transform.TransformPoint(activeCombo.HitboxEnd), Color.red, activeCombo.AttackTime);
+                foreach (Collider collider in enemyColliders)
+                {
+                    if (collider.TryGetComponent<EnemyBase>(out EnemyBase enemy))
+                    {
+                        enemy.TakeDamage(activeCombo.Damage, this);
+                    }
+                }
+
                 Debug.Log($"player deals {activeCombo.Damage} damage");
                 StartCoroutine(WaitToFinishAttack(activeCombo.AttackTime));
                 if (!isJumping) currentCombo.Add(attackType);
@@ -180,6 +190,13 @@ public class Character : MonoBehaviour
         rb.AddForce(transform.up * 5, ForceMode.VelocityChange);
         isJumping = true;
     }
+
+    public void AddScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+        Debug.Log($"{gameObject.name} earned {scoreToAdd} points, for a total of {score}");
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.tag == "Floor")
@@ -193,6 +210,8 @@ public class ComboAction
     public AttackType ComboUnit;
     public int Damage;
     public float AttackTime;
+    public Vector3 HitboxStart, HitboxEnd;
+    public float HitboxRadius = 0.5f;
     public ComboAction[] FollowUpActions;
 }
 
