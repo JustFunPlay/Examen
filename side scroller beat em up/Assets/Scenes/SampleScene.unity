@@ -187,6 +187,15 @@ MonoBehaviour:
         Damage: 33
         AttackTime: 0.9
         FollowUpActions: []
+  aerialCombos:
+  - ComboUnit: 0
+    Damage: 15
+    AttackTime: 0.5
+    FollowUpActions: []
+  - ComboUnit: 1
+    Damage: 20
+    AttackTime: 0.75
+    FollowUpActions: []
 --- !u!136 &162565203
 CapsuleCollider:
   m_ObjectHideFlags: 0

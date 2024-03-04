@@ -17,6 +17,7 @@ public class Character : MonoBehaviour
     private float leftEdge, rightEdge;
     [SerializeField] private List<AttackType> currentCombo = new List<AttackType>();
     [SerializeField] private ComboAction[] comboActions;
+    [SerializeField] private ComboAction[] aerialCombos;
 
     public void SetMoveEdges(float leftEdge, float rightEdge)
     {
@@ -33,6 +34,15 @@ public class Character : MonoBehaviour
         if (canAct)
         {
             rb.MovePosition(new Vector3(Mathf.Clamp(transform.position.x + moveVector.x * movementSpeed * Time.deltaTime, leftEdge, rightEdge), transform.position.y, Mathf.Clamp(transform.position.z + moveVector.y * movementSpeed * Time.deltaTime, -3f, 3f)));
+        }
+        if (comboTime > 0)
+        {
+            comboTime -= Time.deltaTime;
+        }
+        else if (comboTime < 0)
+        {
+            comboTime = 0;
+            currentCombo.Clear();
         }
     }
 
@@ -67,7 +77,14 @@ public class Character : MonoBehaviour
             ComboAction activeCombo = null;
             if (isJumping)
             {
-
+                for (int i = 0; i < aerialCombos.Length; i++)
+                {
+                    if (aerialCombos[i].ComboUnit == attackType)
+                    {
+                        activeCombo = comboActions[i];
+                        break;
+                    }
+                }
             }
             else
             {
@@ -142,16 +159,19 @@ public class Character : MonoBehaviour
             {
                 Debug.Log($"player deals {activeCombo.Damage} damage");
                 StartCoroutine(WaitToFinishAttack(activeCombo.AttackTime));
-                currentCombo.Add(attackType);
+                if (!isJumping) currentCombo.Add(attackType);
             }
         }
     }
     IEnumerator WaitToFinishAttack(float attackTime)
     {
         canAct = false;
+        comboTime = attackTime * 1.1f;
         rb.constraints = RigidbodyConstraints.FreezeAll;
-        yield return new WaitForSeconds(attackTime);
+        yield return new WaitForSeconds(attackTime * 0.75f);
         rb.constraints = RigidbodyConstraints.FreezeRotation;
+        yield return new WaitForSeconds(attackTime * 0.25f);
+        comboTime = 1f;
         canAct = true;
     }
     public void Jump()
