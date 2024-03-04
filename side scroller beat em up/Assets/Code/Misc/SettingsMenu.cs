@@ -8,17 +8,17 @@ using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
-    public GameObject menuUI;
-    public GameObject levelSelectUI;
-    public GameObject settingsUI;
+    public GameObject MenuUI;
+    public GameObject CharacterSelectUI;
+    public GameObject SettingsUI;
     public GameObject creditsUI;
 
-    public AudioSource buttonClick;
+    public AudioSource ButtonClick;
 
-    public AudioMixer audioMixer;
+    public AudioMixer AudioMixer;
 
     Resolution[] resolutions;
-    public TMPro.TMP_Dropdown resolutionsDropdown;
+    public TMPro.TMP_Dropdown ResolutionsDropdown;
 
     //post processing wat niet werkt
     //public Slider brightnessSlider;
@@ -32,7 +32,7 @@ public class SettingsMenu : MonoBehaviour
 
         resolutions = Screen.resolutions;
 
-        resolutionsDropdown.ClearOptions();
+        ResolutionsDropdown.ClearOptions();
 
         List<string> options = new List<string>();
 
@@ -48,21 +48,22 @@ public class SettingsMenu : MonoBehaviour
             }
         }
 
-        resolutionsDropdown.AddOptions(options);
-        resolutionsDropdown.value = currentResolutionIndex;
-        resolutionsDropdown.RefreshShownValue();
-        QualitySettings.SetQualityLevel(5);
+        ResolutionsDropdown.AddOptions(options);
+        ResolutionsDropdown.value = currentResolutionIndex;
+        ResolutionsDropdown.RefreshShownValue();
+        QualitySettings.SetQualityLevel(2);
     }
 
     public void SetResolution(int resolutionIndex)
     {
+        ButtonClick.Play();
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
     public void setFullScreen(bool isFullScreen)
     {
-        buttonClick.Play();
+        ButtonClick.Play();
         Screen.fullScreen = isFullScreen;
     }
 
@@ -72,7 +73,7 @@ public class SettingsMenu : MonoBehaviour
     {
         if (quality)
         {
-            buttonClick.Play();
+            ButtonClick.Play();
             QualitySettings.SetQualityLevel(0);
         }
     }
@@ -81,7 +82,7 @@ public class SettingsMenu : MonoBehaviour
     {
         if (quality)
         {
-            buttonClick.Play();
+            ButtonClick.Play();
             QualitySettings.SetQualityLevel(2);
         }
     }
@@ -90,7 +91,7 @@ public class SettingsMenu : MonoBehaviour
     {
         if (quality)
         {
-            buttonClick.Play();
+            ButtonClick.Play();
             QualitySettings.SetQualityLevel(3);
         }
     }
@@ -99,92 +100,99 @@ public class SettingsMenu : MonoBehaviour
     {
         if (quality)
         {
-            buttonClick.Play();
+            ButtonClick.Play();
             QualitySettings.SetQualityLevel(5);
         }
     }
 
+    public void setQuality(int qualityIndex)
+    {
+        ButtonClick.Play();
+        QualitySettings.SetQualityLevel(qualityIndex);
+    }
+
+
     //VOLUME SLIDERS//
+    public void SetMasterVolume(float volume)
+    {
+        AudioMixer.SetFloat("masterVolume", Mathf.Log10(volume) * 20);
+    }
     public void SetSoundVolume(float volume)
     {
-        audioMixer.SetFloat("SoundVolume", Mathf.Log10(volume) * 20);
+        AudioMixer.SetFloat("soundVolume", Mathf.Log10(volume) * 20);
     }
 
     public void SetMusicVolume(float volume)
     {
-        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
+        AudioMixer.SetFloat("musicVolume", Mathf.Log10(volume) * 20);
     }
 
     //BUTTONS//
     public void GoToLevelSelect()
     {
-        buttonClick.Play();
-        menuUI.SetActive(false);
-        levelSelectUI.SetActive(true);
-        settingsUI.SetActive(false);
+        ButtonClick.Play();
+        MenuUI.SetActive(false);
+        CharacterSelectUI.SetActive(true);
+        SettingsUI.SetActive(false);
         creditsUI.SetActive(false);
     }
 
     public void GoToSettings()
     {
-        buttonClick.Play();
-        menuUI.SetActive(false);
-        levelSelectUI.SetActive(false);
-        settingsUI.SetActive(true);
+        ButtonClick.Play();
+        MenuUI.SetActive(false);
+        CharacterSelectUI.SetActive(false);
+        SettingsUI.SetActive(true);
         creditsUI.SetActive(false);
     }
 
     public void GoToCredits()
     {
-        buttonClick.Play();
-        menuUI.SetActive(false);
-        levelSelectUI.SetActive(false);
-        settingsUI.SetActive(false);
+        ButtonClick.Play();
+        MenuUI.SetActive(false);
+        CharacterSelectUI.SetActive(false);
+        SettingsUI.SetActive(false);
         creditsUI.SetActive(true);
     }
 
     public void QuitGame()
     {
-        buttonClick.Play();
+        ButtonClick.Play();
         Application.Quit();
     }
 
     public void ReturnToMenu()
     {
-        buttonClick.Play();
-        menuUI.SetActive(true);
-        levelSelectUI.SetActive(false);
-        settingsUI.SetActive(false);
+        ButtonClick.Play();
+        MenuUI.SetActive(true);
+        CharacterSelectUI.SetActive(false);
+        SettingsUI.SetActive(false);
         creditsUI.SetActive(false);
     }
 
     public void LoadLevel1()
     {
-        buttonClick.Play();
+        ButtonClick.Play();
         SceneManager.LoadScene("franswildit");
        // FindObjectOfType<AudioManagerScript>().Play("DefenceSetupMusic");
     }
 
     public void LoadLevel2()
     {
-        buttonClick.Play();
+        ButtonClick.Play();
         SceneManager.LoadScene("SunsetLevel");
        // FindObjectOfType<AudioManagerScript>().Play("DefenceSetupMusic");
     }
 
     public void LoadLevel3()
     {
-        buttonClick.Play();
+        ButtonClick.Play();
         SceneManager.LoadScene("Catacombs");
     }
 
     //SETTINGS//
 
-    public void SetQuality(int qualityIndex)
-    {
-        buttonClick.Play();
-        QualitySettings.SetQualityLevel(qualityIndex);
-    }
+
 
     // public void AdjustBrightness(float value)
     //   {
