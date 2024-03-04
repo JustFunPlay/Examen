@@ -157,6 +157,15 @@ public class Character : MonoBehaviour
             }
             if (activeCombo != null)
             {
+                Collider[] enemyColliders = Physics.OverlapSphere(transform.position + transform.forward, 0.5f);
+                foreach (Collider collider in enemyColliders)
+                {
+                    if (collider.TryGetComponent<EnemyBase>(out EnemyBase enemy))
+                    {
+                        enemy.TakeDamage(activeCombo.Damage, this);
+                    }
+                }
+
                 Debug.Log($"player deals {activeCombo.Damage} damage");
                 StartCoroutine(WaitToFinishAttack(activeCombo.AttackTime));
                 if (!isJumping) currentCombo.Add(attackType);
@@ -180,6 +189,13 @@ public class Character : MonoBehaviour
         rb.AddForce(transform.up * 5, ForceMode.VelocityChange);
         isJumping = true;
     }
+
+    public void AddScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+        Debug.Log($"{gameObject.name} earned {scoreToAdd} points, for a total of {score}");
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.tag == "Floor")
