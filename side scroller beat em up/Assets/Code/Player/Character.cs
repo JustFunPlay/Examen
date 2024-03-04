@@ -15,6 +15,8 @@ public class Character : MonoBehaviour
     private Rigidbody rb;
     Vector2 moveVector;
     private float leftEdge, rightEdge;
+    [SerializeField] private List<AttackType> currentCombo = new List<AttackType>();
+    [SerializeField] private ComboAction[] comboActions;
 
     public void SetMoveEdges(float leftEdge, float rightEdge)
     {
@@ -58,19 +60,99 @@ public class Character : MonoBehaviour
             transform.LookAt(transform.position + Vector3.left);
         moveVector = moveDirection;
     }
-    public void Attack()
+    public void Attack(AttackType attackType)
     {
         if (canAct)
         {
+            ComboAction activeCombo = null;
             if (isJumping)
             {
 
             }
             else
             {
+                if (currentCombo.Count > 0)
+                {
+                    int comboDepth = 0;
+                    for (int i = 0; i < comboActions.Length; i++)
+                    {
+                        if (comboActions[i].ComboUnit == currentCombo[0])
+                        {
+                            activeCombo = comboActions[i];
+                            comboDepth++;
+                            break;
+                        }
+                    }
+                    while (comboDepth < currentCombo.Count && activeCombo != null && activeCombo.FollowUpActions.Length > 0)
+                    {
+                        bool hasFollowUp = false;
+                        for (int i = 0; i < activeCombo.FollowUpActions.Length; i++)
+                        {
+                            if (activeCombo.FollowUpActions[i].ComboUnit == currentCombo[comboDepth])
+                            {
+                                activeCombo = activeCombo.FollowUpActions[i];
+                                comboDepth++;
+                                hasFollowUp = true;
+                                break;
+                            }
+                        }
+                        if (!hasFollowUp)
+                        {
+                            activeCombo = null;
+                        }
+                    }
+                    if (activeCombo == null || activeCombo.FollowUpActions.Length == 0)
+                    {
+                        currentCombo.Clear();
+                    }
+                    else
+                    {
+                        bool hasFollowUp = false;
+                        for (int i = 0; i < activeCombo.FollowUpActions.Length; i++)
+                        {
+                            if (activeCombo.FollowUpActions[i].ComboUnit == attackType)
+                            {
+                                hasFollowUp = true;
+                                activeCombo = activeCombo.FollowUpActions[i];
+                                comboDepth++;
+                                break;
+                            }
+                        }
+                        if (!hasFollowUp)
+                        {
+                            activeCombo = null;
+                            currentCombo.Clear();
+                        }
+                    }
 
+                }
+                if (currentCombo.Count == 0)
+                {
+                    for (int i = 0; i < comboActions.Length; i++)
+                    {
+                        if (comboActions[i].ComboUnit == attackType)
+                        {
+                            activeCombo = comboActions[i];
+                            break;
+                        }
+                    }
+                }
+            }
+            if (activeCombo != null)
+            {
+                Debug.Log($"player deals {activeCombo.Damage} damage");
+                StartCoroutine(WaitToFinishAttack(activeCombo.AttackTime));
+                currentCombo.Add(attackType);
             }
         }
+    }
+    IEnumerator WaitToFinishAttack(float attackTime)
+    {
+        canAct = false;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+        yield return new WaitForSeconds(attackTime);
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        canAct = true;
     }
     public void Jump()
     {
@@ -83,4 +165,19 @@ public class Character : MonoBehaviour
         if (collision.collider.gameObject.tag == "Floor")
             isJumping = false;
     }
+}
+
+[System.Serializable]
+public class ComboAction
+{
+    public AttackType ComboUnit;
+    public int Damage;
+    public float AttackTime;
+    public ComboAction[] FollowUpActions;
+}
+
+public enum AttackType
+{
+    Light,
+    Heavy
 }
