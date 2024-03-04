@@ -81,7 +81,7 @@ public class Character : MonoBehaviour
                 {
                     if (aerialCombos[i].ComboUnit == attackType)
                     {
-                        activeCombo = comboActions[i];
+                        activeCombo = aerialCombos[i];
                         break;
                     }
                 }
