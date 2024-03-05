@@ -35,6 +35,8 @@ public class Character : MonoBehaviour
         {
             rb.MovePosition(new Vector3(Mathf.Clamp(transform.position.x + moveVector.x * movementSpeed * Time.deltaTime, leftEdge, rightEdge), transform.position.y, Mathf.Clamp(transform.position.z + moveVector.y * movementSpeed * Time.deltaTime, -3f, 3f)));
         }
+        if (moveVector != Vector2.zero && canAct) animator.SetBool("Walk", true);
+        else animator.SetBool("Walk", false);
         if (comboTime > 0)
         {
             comboTime -= Time.deltaTime;
@@ -166,7 +168,7 @@ public class Character : MonoBehaviour
                         enemy.TakeDamage(activeCombo.Damage, this);
                     }
                 }
-
+                if (animator != null) animator.SetTrigger(activeCombo.AnimationCall);
                 Debug.Log($"player deals {activeCombo.Damage} damage");
                 StartCoroutine(WaitToFinishAttack(activeCombo.AttackTime));
                 if (!isJumping) currentCombo.Add(attackType);
@@ -188,6 +190,7 @@ public class Character : MonoBehaviour
     {
         if (!canAct || isJumping) return;
         rb.AddForce(transform.up * 5, ForceMode.VelocityChange);
+        if (animator != null) animator.SetBool("Jump", true);
         isJumping = true;
     }
 
@@ -200,7 +203,10 @@ public class Character : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.tag == "Floor")
+        {
             isJumping = false;
+            if (animator != null) animator.SetBool("Jump", false);
+        }
     }
 }
 
@@ -208,6 +214,7 @@ public class Character : MonoBehaviour
 public class ComboAction
 {
     public AttackType ComboUnit;
+    public string AnimationCall;
     public int Damage;
     public float AttackTime;
     public Vector3 HitboxStart, HitboxEnd;
