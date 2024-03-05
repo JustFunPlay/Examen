@@ -15,20 +15,30 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] int scoreOnKill;
 
     protected NavMeshAgent agent;
-    protected bool isActive;
+    [SerializeField] protected bool isActive;
     protected Animator animator;
+
+    [SerializeField] protected bool canAct;
 
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
         animator = GetComponent<Animator>();
         ActivateSelf();
     }
     protected virtual void Update()
     {
-        if (agent != null && closestCharacter != null)
+        if (canAct && isActive)
         {
-            agent.SetDestination(closestCharacter.transform.position + (Vector3.right * (transform.position.x > closestCharacter.transform.position.x ? attackRange : -attackRange) ));
+            if (agent != null && closestCharacter != null)
+            {
+                agent.SetDestination(closestCharacter.transform.position + (Vector3.right * (transform.position.x > closestCharacter.transform.position.x ? attackRange : -attackRange) ));
+            }
+            if (transform.position.x > closestCharacter.transform.position.x)
+                transform.LookAt(transform.position + Vector3.left);
+            else transform.LookAt(transform.position + Vector3.right);
+
         }
     }
 
@@ -55,5 +65,6 @@ public class EnemyBase : MonoBehaviour
         gameObject.SetActive(true);
         closestCharacter = FindObjectOfType<Character>();
         isActive = true;
+        canAct = true;
     }
 }
