@@ -111,7 +111,6 @@ public class InputManager : MonoBehaviour
                 wasdLightAttackInteraction.Enable();
                 wasdHeavyAttackInteraction.performed += P1HeavyAttack;
                 wasdHeavyAttackInteraction.Enable();
-                Debug.Log("WASD has been bound to player 1");
                 break;
             case InputType.ArrowKeys:
                 arrowKeyMoveInteraction.performed += P1Move;
@@ -136,7 +135,6 @@ public class InputManager : MonoBehaviour
                 controllerHeavyAttackInteraction.Enable();
                 break;
         }
-        Debug.Log($"wasd move bindings: {wasdMoveInteraction.bindings}\narrowKey move bindings: {arrowKeyMoveInteraction.bindings}\ncontroller move bindings: {controllerMoveInteraction.bindings}");
     }
     private void UnbindPlayer1()
     {
@@ -180,25 +178,21 @@ public class InputManager : MonoBehaviour
 
     private void P1Move(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log($"Player 1 moveValue: {callbackContext.ReadValue<Vector2>()}");
         if (Player1 != null)
             Player1.Move(callbackContext.ReadValue<Vector2>());
     }
     private void P1Jump(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("Player 1 jumped");
         if (Player1 != null)
             Player1.Jump();
     }
     private void P1LightAttack(InputAction.CallbackContext callbackContext)
     {
-        //Debug.Log("Player 1 performed light attack");
         if (Player1 != null)
             Player1.Attack(AttackType.Light);
     }
     private void P1HeavyAttack(InputAction.CallbackContext callbackContext)
     {
-        //Debug.Log("Player 1 performed heavy attack");
         if (Player1 != null)
             Player1.Attack(AttackType.Heavy);
     }
