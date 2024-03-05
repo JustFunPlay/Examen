@@ -3314,7 +3314,7 @@ MonoBehaviour:
         FollowUpActions: []
   aerialCombos:
   - ComboUnit: 0
-    AnimationCall: Arial Attack 1
+    AnimationCall: Aerial Attack 1
     Damage: 15
     AttackTime: 0.4
     HitboxStart: {x: 1.5, y: 4, z: 0}
@@ -3322,7 +3322,7 @@ MonoBehaviour:
     HitboxRadius: 0.4
     FollowUpActions: []
   - ComboUnit: 1
-    AnimationCall: Arial Attack 2
+    AnimationCall: Aerial Attack 2
     Damage: 22
     AttackTime: 0.6
     HitboxStart: {x: 0.5, y: 7, z: 4}
