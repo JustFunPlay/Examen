@@ -7,18 +7,20 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance;
     public Character Player1;
-    //player 2 character
+    public Character Player2;
     InputType player1Input;
     InputType player2Input;
-    bool player2Active;
+    [Header("WASD input")]
     [SerializeField] private InputAction wasdMoveInteraction;
     [SerializeField] private InputAction wasdJumpInteraction;
     [SerializeField] private InputAction wasdLightAttackInteraction;
     [SerializeField] private InputAction wasdHeavyAttackInteraction;
+    [Header("Controller input")]
     [SerializeField] private InputAction controllerMoveInteraction;
     [SerializeField] private InputAction controllerJumpInteraction;
     [SerializeField] private InputAction controllerLightAttackInteraction;
     [SerializeField] private InputAction controllerHeavyAttackInteraction;
+    [Header("Arrow Key input")]
     [SerializeField] private InputAction arrowKeyMoveInteraction;
     [SerializeField] private InputAction arrowKeyJumpInteraction;
     [SerializeField] private InputAction arrowKeyLightAttackInteraction;
@@ -50,19 +52,19 @@ public class InputManager : MonoBehaviour
         switch (player1Input)
         {
             case InputType.WASD:
-                if (player2Active && player2Input == InputType.ArrowKeys)
+                if (GameManager.Player2Active && player2Input == InputType.ArrowKeys)
                     player1Input = InputType.Controller;
                 else
                     player1Input = InputType.ArrowKeys;
                 break;
             case InputType.ArrowKeys:
-                if (player2Active && player2Input == InputType.Controller)
+                if (GameManager.Player2Active && player2Input == InputType.Controller)
                     player1Input = InputType.WASD;
                 else
                     player1Input = InputType.Controller;
                 break;
             case InputType.Controller:
-                if (player2Active && player2Input == InputType.WASD)
+                if (GameManager.Player2Active && player2Input == InputType.WASD)
                     player1Input = InputType.ArrowKeys;
                 else
                     player1Input = InputType.WASD;
