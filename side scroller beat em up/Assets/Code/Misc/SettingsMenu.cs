@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 
 public class SettingsMenu : MonoBehaviour
@@ -20,15 +22,12 @@ public class SettingsMenu : MonoBehaviour
     Resolution[] resolutions;
     public TMPro.TMP_Dropdown ResolutionsDropdown;
 
-    //post processing wat niet werkt
-    //public Slider brightnessSlider;
-    //public PostProcessProfile brightness;
-    //public PostProcessLayer layer;
-    //public AutoExposure exposure;
+    //Post processing settings
+    public Volume PostProcessVolume;
 
     void Start()
     {
-        //brightness.TryGetSettings(out exposure);
+        //isDisabled.isOn = false;
 
         resolutions = Screen.resolutions;
 
@@ -65,6 +64,15 @@ public class SettingsMenu : MonoBehaviour
     {
         ButtonClick.Play();
         Screen.fullScreen = isFullScreen;
+    }
+
+    public void DisableFilmgrain(bool isDisabled)
+    {
+        ButtonClick.Play();
+        if (PostProcessVolume.profile.TryGet(out FilmGrain filmGrain))
+        {
+            filmGrain.active = isDisabled;
+        }
     }
 
     //Graphics Quality//
