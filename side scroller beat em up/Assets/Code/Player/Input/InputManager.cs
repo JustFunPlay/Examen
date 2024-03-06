@@ -36,6 +36,7 @@ public class InputManager : MonoBehaviour
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
         BindPlayer1();
+        if (Player2 != null) BindPlayer2();
     }
     private void Update()
     {
@@ -45,7 +46,7 @@ public class InputManager : MonoBehaviour
             ChangePlayer1Input = false;
         }
     }
-
+    #region Player 1
     public InputType SetPlayer1NextInput()
     {
         UnbindPlayer1();
@@ -72,31 +73,6 @@ public class InputManager : MonoBehaviour
         }
         BindPlayer1();
         return player1Input;
-    }
-    public InputType SetPlayer2NextInput()
-    {
-        switch (player2Input)
-        {
-            case InputType.WASD:
-                if (player1Input == InputType.ArrowKeys)
-                    player2Input = InputType.Controller;
-                else
-                    player2Input = InputType.ArrowKeys;
-                break;
-            case InputType.ArrowKeys:
-                if (player1Input == InputType.Controller)
-                    player2Input = InputType.WASD;
-                else
-                    player2Input = InputType.Controller;
-                break;
-            case InputType.Controller:
-                if (player1Input == InputType.WASD)
-                    player2Input = InputType.ArrowKeys;
-                else
-                    player2Input = InputType.WASD;
-                break;
-        }
-        return player2Input;
     }
 
     private void BindPlayer1()
@@ -145,35 +121,23 @@ public class InputManager : MonoBehaviour
             case InputType.WASD:
                 wasdMoveInteraction.performed -= P1Move;
                 wasdMoveInteraction.canceled -= P1Move;
-                wasdMoveInteraction.Disable();
                 wasdJumpInteraction.performed -= P1Jump;
-                wasdJumpInteraction.Disable();
                 wasdLightAttackInteraction.performed -= P1LightAttack;
-                wasdLightAttackInteraction.Disable();
                 wasdHeavyAttackInteraction.performed -= P1HeavyAttack;
-                wasdHeavyAttackInteraction.Disable();
                 break;
             case InputType.ArrowKeys:
                 arrowKeyMoveInteraction.performed -= P1Move;
                 arrowKeyMoveInteraction.canceled -= P1Move;
-                arrowKeyMoveInteraction.Disable();
                 arrowKeyJumpInteraction.performed -= P1Jump;
-                arrowKeyJumpInteraction.Disable();
                 arrowKeyLightAttackInteraction.performed -= P1LightAttack;
-                arrowKeyLightAttackInteraction.Disable();
                 arrowKeyHeavyAttackInteraction.performed -= P1HeavyAttack;
-                arrowKeyHeavyAttackInteraction.Disable();
                 break;
             case InputType.Controller:
                 controllerMoveInteraction.performed -= P1Move;
                 controllerMoveInteraction.canceled -= P1Move;
-                controllerMoveInteraction.Disable();
                 controllerJumpInteraction.performed -= P1Jump;
-                controllerJumpInteraction.Disable();
                 controllerLightAttackInteraction.performed -= P1LightAttack;
-                controllerLightAttackInteraction.Disable();
                 controllerHeavyAttackInteraction.performed -= P1HeavyAttack;
-                controllerHeavyAttackInteraction.Disable();
                 break;
         }
     }
@@ -198,7 +162,125 @@ public class InputManager : MonoBehaviour
         if (Player1 != null)
             Player1.Attack(AttackType.Heavy);
     }
+    #endregion
 
+    #region Player 2
+    public InputType SetPlayer2NextInput()
+    {
+        UnbindPlayer2();
+        switch (player2Input)
+        {
+            case InputType.WASD:
+                if (player1Input == InputType.ArrowKeys)
+                    player2Input = InputType.Controller;
+                else
+                    player2Input = InputType.ArrowKeys;
+                break;
+            case InputType.ArrowKeys:
+                if (player1Input == InputType.Controller)
+                    player2Input = InputType.WASD;
+                else
+                    player2Input = InputType.Controller;
+                break;
+            case InputType.Controller:
+                if (player1Input == InputType.WASD)
+                    player2Input = InputType.ArrowKeys;
+                else
+                    player2Input = InputType.WASD;
+                break;
+        }
+        BindPlayer2();
+        return player2Input;
+    }
+
+    private void BindPlayer2()
+    {
+        switch (player2Input)
+        {
+            case InputType.WASD:
+                wasdMoveInteraction.performed += P2Move;
+                wasdMoveInteraction.canceled += P2Move;
+                wasdMoveInteraction.Enable();
+                wasdJumpInteraction.performed += P2Jump;
+                wasdJumpInteraction.Enable();
+                wasdLightAttackInteraction.performed += P2LightAttack;
+                wasdLightAttackInteraction.Enable();
+                wasdHeavyAttackInteraction.performed += P2HeavyAttack;
+                wasdHeavyAttackInteraction.Enable();
+                break;
+            case InputType.ArrowKeys:
+                arrowKeyMoveInteraction.performed += P2Move;
+                arrowKeyMoveInteraction.canceled += P2Move;
+                arrowKeyMoveInteraction.Enable();
+                arrowKeyJumpInteraction.performed += P2Jump;
+                arrowKeyJumpInteraction.Enable();
+                arrowKeyLightAttackInteraction.performed += P2LightAttack;
+                arrowKeyLightAttackInteraction.Enable();
+                arrowKeyHeavyAttackInteraction.performed += P2HeavyAttack;
+                arrowKeyHeavyAttackInteraction.Enable();
+                break;
+            case InputType.Controller:
+                controllerMoveInteraction.performed += P2Move;
+                controllerMoveInteraction.canceled += P2Move;
+                controllerMoveInteraction.Enable();
+                controllerJumpInteraction.performed += P2Jump;
+                controllerJumpInteraction.Enable();
+                controllerLightAttackInteraction.performed += P2LightAttack;
+                controllerLightAttackInteraction.Enable();
+                controllerHeavyAttackInteraction.performed += P2HeavyAttack;
+                controllerHeavyAttackInteraction.Enable();
+                break;
+        }
+    }
+    private void UnbindPlayer2()
+    {
+        switch (player2Input)
+        {
+            case InputType.WASD:
+                wasdMoveInteraction.performed -= P2Move;
+                wasdMoveInteraction.canceled -= P2Move;
+                wasdJumpInteraction.performed -= P2Jump;
+                wasdLightAttackInteraction.performed -= P2LightAttack;
+                wasdHeavyAttackInteraction.performed -= P2HeavyAttack;
+                break;
+            case InputType.ArrowKeys:
+                arrowKeyMoveInteraction.performed -= P2Move;
+                arrowKeyMoveInteraction.canceled -= P2Move;
+                arrowKeyJumpInteraction.performed -= P2Jump;
+                arrowKeyLightAttackInteraction.performed -= P2LightAttack;
+                arrowKeyHeavyAttackInteraction.performed -= P2HeavyAttack;
+                break;
+            case InputType.Controller:
+                controllerMoveInteraction.performed -= P2Move;
+                controllerMoveInteraction.canceled -= P2Move;
+                controllerJumpInteraction.performed -= P2Jump;
+                controllerLightAttackInteraction.performed -= P2LightAttack;
+                controllerHeavyAttackInteraction.performed -= P2HeavyAttack;
+                break;
+        }
+    }
+
+    private void P2Move(InputAction.CallbackContext callbackContext)
+    {
+        if (Player2 != null)
+            Player2.Move(callbackContext.ReadValue<Vector2>());
+    }
+    private void P2Jump(InputAction.CallbackContext callbackContext)
+    {
+        if (Player2 != null)
+            Player2.Jump();
+    }
+    private void P2LightAttack(InputAction.CallbackContext callbackContext)
+    {
+        if (Player2 != null)
+            Player2.Attack(AttackType.Light);
+    }
+    private void P2HeavyAttack(InputAction.CallbackContext callbackContext)
+    {
+        if (Player2 != null)
+            Player2.Attack(AttackType.Heavy);
+    }
+    #endregion
 }
 
 public enum InputType
