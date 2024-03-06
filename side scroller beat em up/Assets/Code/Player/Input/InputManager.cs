@@ -46,6 +46,16 @@ public class InputManager : MonoBehaviour
             ChangePlayer1Input = false;
         }
     }
+
+    public void SetPlayer1(Character player1Character)
+    {
+        Player1 = player1Character;
+    }
+    public void SetPlayer2(Character player2Character)
+    {
+        Player2 = player2Character;
+    }
+
     #region Player 1
     public InputType SetPlayer1NextInput()
     {
