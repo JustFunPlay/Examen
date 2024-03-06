@@ -14,7 +14,7 @@ public class Character : MonoBehaviour
     private float comboTime;
     private Rigidbody rb;
     Vector2 moveVector;
-    private float leftEdge, rightEdge;
+    private float leftEdge, rightEdge, frontEdge, backEdge;
     private List<AttackType> currentCombo = new List<AttackType>();
     [SerializeField] private ComboAction[] comboActions;
     [SerializeField] private ComboAction[] aerialCombos;
@@ -23,6 +23,11 @@ public class Character : MonoBehaviour
     {
         this.leftEdge = leftEdge;
         this.rightEdge = rightEdge;
+    }
+    public void SetWorldEdges(float frontEdge, float backEdge)
+    {
+        this.frontEdge = frontEdge;
+        this.backEdge = backEdge;
     }
 
     private void Start()
@@ -33,7 +38,7 @@ public class Character : MonoBehaviour
     {
         if (canAct)
         {
-            rb.MovePosition(new Vector3(Mathf.Clamp(transform.position.x + moveVector.x * movementSpeed * Time.deltaTime, leftEdge, rightEdge), transform.position.y, Mathf.Clamp(transform.position.z + moveVector.y * movementSpeed * Time.deltaTime, -3f, 3f)));
+            rb.MovePosition(new Vector3(Mathf.Clamp(transform.position.x + moveVector.x * movementSpeed * Time.deltaTime, leftEdge, rightEdge), transform.position.y, Mathf.Clamp(transform.position.z + moveVector.y * movementSpeed * Time.deltaTime, frontEdge, backEdge)));
         }
         if (moveVector != Vector2.zero && canAct) animator.SetBool("Walk", true);
         else animator.SetBool("Walk", false);
