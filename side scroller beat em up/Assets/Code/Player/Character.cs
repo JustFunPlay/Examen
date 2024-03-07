@@ -172,6 +172,10 @@ public class Character : MonoBehaviour
                     {
                         enemy.TakeDamage(activeCombo.Damage, this);
                     }
+                    else if (collider.TryGetComponent<DestructableObject>(out DestructableObject destructableObject))
+                    {
+                        destructableObject.TakeDamage(activeCombo.Damage);
+                    }
                 }
                 if (animator != null) animator.SetTrigger(activeCombo.AnimationCall);
                 Debug.Log($"player deals {activeCombo.Damage} damage");
