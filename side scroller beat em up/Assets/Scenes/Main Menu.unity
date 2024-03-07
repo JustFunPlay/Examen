@@ -9862,6 +9862,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1926132154}
     m_Modifications:
+    - target: {fileID: 3592548876841223365, guid: b8d98e697344eaa4e831228f5b27e57c,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3592548876841223365, guid: b8d98e697344eaa4e831228f5b27e57c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: be6cc52e3829f694e9bcb770ba565459, type: 2}
     - target: {fileID: 4305110554067179161, guid: b8d98e697344eaa4e831228f5b27e57c,
         type: 3}
       propertyPath: m_Enabled
@@ -10136,10 +10146,45 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4607583170453735408, guid: 038c6c80307be0646b929df4cf062a24,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607583170453735408, guid: 038c6c80307be0646b929df4cf062a24,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: be6cc52e3829f694e9bcb770ba565459, type: 2}
+    - target: {fileID: 6643962125863246802, guid: 038c6c80307be0646b929df4cf062a24,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.056159712
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643962125863246802, guid: 038c6c80307be0646b929df4cf062a24,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.06675102
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643962125863246802, guid: 038c6c80307be0646b929df4cf062a24,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9961157
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643962125863246802, guid: 038c6c80307be0646b929df4cf062a24,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.011998098
+      objectReference: {fileID: 0}
     - target: {fileID: 6732580805252835948, guid: 038c6c80307be0646b929df4cf062a24,
         type: 3}
       propertyPath: m_Name
       value: Male agent
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922567849231700737, guid: 038c6c80307be0646b929df4cf062a24,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8207661090314426908, guid: 038c6c80307be0646b929df4cf062a24,
         type: 3}
@@ -10345,7 +10390,7 @@ Transform:
   m_GameObject: {fileID: 689642420}
   serializedVersion: 2
   m_LocalRotation: {x: 0.11337106, y: 0.9285615, z: -0.19840157, w: 0.29250196}
-  m_LocalPosition: {x: -0.595, y: 1.95, z: 1.326}
+  m_LocalPosition: {x: -0.738, y: 1.95, z: 1.366}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
