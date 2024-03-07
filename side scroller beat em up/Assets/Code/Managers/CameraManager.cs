@@ -26,6 +26,7 @@ public class CameraManager : MonoBehaviour
             togleLock = false;
         }
         List<float> characterPositions = new List<float>();
+        if (Characters.Count == 0) return;
         for (int i = 0; i < Characters.Count; i++)
         {
             characterPositions.Add(Characters[i].transform.position.x);
