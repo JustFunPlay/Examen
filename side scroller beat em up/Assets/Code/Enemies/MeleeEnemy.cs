@@ -12,7 +12,7 @@ public class MeleeEnemy : EnemyBase
             {
                 int r = Random.Range(0, 100);
                 Debug.Log($"r = {r}");
-                if (r <= 5) StartCoroutine(Attack());
+                if (r <= 3) StartCoroutine(Attack());
             }
         }
     }
