@@ -3232,6 +3232,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0553f1581f0134e4899efe330fa58506,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 2517733665742036399}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0553f1581f0134e4899efe330fa58506,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 7428577916740672588}
   m_SourcePrefab: {fileID: 100100000, guid: 0553f1581f0134e4899efe330fa58506, type: 3}
 --- !u!4 &5917228576894441703 stripped
@@ -3377,6 +3381,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &2517733665742036399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6437307044979868253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab1e3cd253cf6de41afdc8c70908542f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Idle: []
+  Alert: []
+  Attack: []
+  Attack2: []
+  Attack3: []
+  Attack4: []
+  Walking: []
+  NormalSound: []
 --- !u!136 &7428577916740672588
 CapsuleCollider:
   m_ObjectHideFlags: 0

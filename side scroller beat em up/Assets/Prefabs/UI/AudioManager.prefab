@@ -45,59 +45,73 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: sas
-    clip: {fileID: 0}
-    group: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
+  - Name: Attack1
+    Clip: {fileID: 8300000, guid: a87fcf0f80a40844dbd94f659ad6b068, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 1
+    Pitch: 1.05
+    Loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    group: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
+  - Name: Attack2
+    Clip: {fileID: 8300000, guid: a87fcf0f80a40844dbd94f659ad6b068, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 1
+    Pitch: 1.44
+    Loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    group: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
+  - Name: Attack3
+    Clip: {fileID: 8300000, guid: a87fcf0f80a40844dbd94f659ad6b068, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 1
+    Pitch: 0.88
+    Loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    group: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
+  - Name: Attack4
+    Clip: {fileID: 8300000, guid: 6e40225914b97e540a8d59cd2d949d9c, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    group: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
+  - Name: Attack5
+    Clip: {fileID: 8300000, guid: 6e40225914b97e540a8d59cd2d949d9c, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 1
+    Pitch: 0.88
+    Loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    group: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
+  - Name: Attack6
+    Clip: {fileID: 8300000, guid: 6e40225914b97e540a8d59cd2d949d9c, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 1
+    Pitch: 1.27
+    Loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    group: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
+  - Name: Heavy attack 3
+    Clip: {fileID: 0}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    group: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
+  - Name: 
+    Clip: {fileID: 0}
+    Group: {fileID: 0}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    source: {fileID: 0}
+  - Name: 
+    Clip: {fileID: 0}
+    Group: {fileID: 0}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
     source: {fileID: 0}

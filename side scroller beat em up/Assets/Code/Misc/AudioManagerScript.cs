@@ -23,12 +23,12 @@ public class AudioManagerScript : MonoBehaviour
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.outputAudioMixerGroup = s.group;
+            s.source.clip = s.Clip;
+            s.source.outputAudioMixerGroup = s.Group;
 
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
+            s.source.volume = s.Volume;
+            s.source.pitch = s.Pitch;
+            s.source.loop = s.Loop;
 
         }
 
@@ -37,7 +37,7 @@ public class AudioManagerScript : MonoBehaviour
 
     public void Play(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(sounds, sound => sound.Name == name);
         if (s == null)
         {
             Debug.LogWarning("Sound: " + name + " not found!");
@@ -49,7 +49,7 @@ public class AudioManagerScript : MonoBehaviour
 
     public void StopPlaying(string sound)
     {
-        Sound s = Array.Find(sounds, item => item.name == sound);
+        Sound s = Array.Find(sounds, item => item.Name == sound);
         if (s == null)
         {
             Debug.LogWarning("Sound: " + name + " not found!");
