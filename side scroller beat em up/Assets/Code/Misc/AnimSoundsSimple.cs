@@ -42,6 +42,21 @@ public class AnimSoundsSimple : MonoBehaviour
         FindObjectOfType<AudioManagerScript>().Play("Attack6");
     }
 
+    void SoundKick1()
+    {
+        FindObjectOfType<AudioManagerScript>().Play("Kick1");
+    }
+
+    void SoundKick2()
+    {
+        FindObjectOfType<AudioManagerScript>().Play("Kick2");
+    }
+
+    void SoundKick3()
+    {
+        FindObjectOfType<AudioManagerScript>().Play("Kick3");
+    }
+
     void SoundWalk1()
     {
         FindObjectOfType<AudioManagerScript>().Play("Walk1");
@@ -55,5 +70,30 @@ public class AnimSoundsSimple : MonoBehaviour
     void SoundWalk3()
     {
         FindObjectOfType<AudioManagerScript>().Play("Walk3");
+    }
+
+    void SoundSilly1()
+    {
+        FindObjectOfType<AudioManagerScript>().Play("Silly1");
+    }
+
+    void SoundSilly2()
+    {
+        FindObjectOfType<AudioManagerScript>().Play("Silly2");
+    }
+
+    void SoundSilly3()
+    {
+        FindObjectOfType<AudioManagerScript>().Play("Silly3");
+    }
+
+    void SoundWoosh1()
+    {
+        FindObjectOfType<AudioManagerScript>().Play("Woosh1");
+    }
+
+    void SoundWoosh2()
+    {
+        FindObjectOfType<AudioManagerScript>().Play("Woosh2");
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimParticles : MonoBehaviour
 {
-    public ParticleSystem EnemyAttack;
+    public ParticleSystem Attack;
     public ParticleSystem Footstep;
 
 
@@ -16,7 +16,7 @@ public class AnimParticles : MonoBehaviour
 
     void PlayParticleAttack()
     {
-        EnemyAttack.Play();
+        Attack.Play();
     }
 
     void PlayParticleWalking()
