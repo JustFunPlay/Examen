@@ -3267,22 +3267,22 @@ MonoBehaviour:
   - ComboUnit: 0
     AnimationCall: Light Attack 1
     Damage: 11
-    AttackTime: 0.15
+    AttackTime: 0.2
     HitboxStart: {x: 0, y: 5.3, z: 1}
     HitboxEnd: {x: 0, y: 5.3, z: 4}
     HitboxRadius: 0.3
     FollowUpActions:
     - ComboUnit: 0
       AnimationCall: Light Attack 2
-      Damage: 14
-      AttackTime: 0.15
+      Damage: 16
+      AttackTime: 0.2
       HitboxStart: {x: 3, y: 5.3, z: 0}
       HitboxEnd: {x: 0, y: 5.3, z: 5}
       HitboxRadius: 0.3
       FollowUpActions:
       - ComboUnit: 0
         AnimationCall: Light Attack 3
-        Damage: 25
+        Damage: 28
         AttackTime: 0.45
         HitboxStart: {x: 3, y: 2.6, z: 1}
         HitboxEnd: {x: -1, y: 8, z: 3.5}
