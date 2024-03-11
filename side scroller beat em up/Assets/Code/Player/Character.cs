@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public Weapon HeldWeapon;
+
     [SerializeField] private int health = 100;
     [SerializeField] private int lives = 3;
     [SerializeField] private int score;
@@ -14,7 +16,7 @@ public class Character : MonoBehaviour
     private float comboTime;
     private Rigidbody rb;
     Vector2 moveVector;
-    private float leftEdge, rightEdge, frontEdge, backEdge;
+    [SerializeField] private float leftEdge, rightEdge, frontEdge, backEdge;
     private List<AttackType> currentCombo = new List<AttackType>();
     [SerializeField] private ComboAction[] comboActions;
     [SerializeField] private ComboAction[] aerialCombos;
@@ -166,19 +168,31 @@ public class Character : MonoBehaviour
             {
                 Collider[] enemyColliders = Physics.OverlapCapsule(transform.TransformPoint(activeCombo.HitboxStart), transform.TransformPoint(activeCombo.HitboxEnd), activeCombo.HitboxRadius);
                 Debug.DrawLine(transform.TransformPoint(activeCombo.HitboxStart), transform.TransformPoint(activeCombo.HitboxEnd), Color.red, activeCombo.AttackTime);
-                foreach (Collider collider in enemyColliders)
+                if (enemyColliders.Length > 0)
                 {
-                    if (collider.TryGetComponent<EnemyBase>(out EnemyBase enemy))
+                    int damageToBeDealt = activeCombo.Damage;
+                    if (HeldWeapon != null)
                     {
-                        enemy.TakeDamage(activeCombo.Damage, this);
+                        damageToBeDealt = (int)(damageToBeDealt * (1f + HeldWeapon.damageBoost));
+                        HeldWeapon.durability--;
+                        if (HeldWeapon.durability <= 0)
+                            Destroy(HeldWeapon.gameObject);
                     }
-                    else if (collider.TryGetComponent<DestructableObject>(out DestructableObject destructableObject))
+                    foreach (Collider collider in enemyColliders)
                     {
-                        destructableObject.TakeDamage(activeCombo.Damage);
+                        if (collider.TryGetComponent<EnemyBase>(out EnemyBase enemy))
+                        {
+                            enemy.TakeDamage(damageToBeDealt, this);
+                        }
+                        else if (collider.TryGetComponent<DestructableObject>(out DestructableObject destructableObject))
+                        {
+                            destructableObject.TakeDamage(damageToBeDealt);
+                        }
                     }
+
+                    Debug.Log($"player deals {damageToBeDealt} damage");
                 }
                 if (animator != null) animator.SetTrigger(activeCombo.AnimationCall);
-                Debug.Log($"player deals {activeCombo.Damage} damage");
                 StartCoroutine(WaitToFinishAttack(activeCombo.AttackTime));
                 if (!isJumping) currentCombo.Add(attackType);
             }
