@@ -9,12 +9,15 @@ public class SceneTransition : MonoBehaviour
 
     public float TransitionTime = 1f;
 
-    public void LoadNextScene()
+    public void LoadScene(int sceneToLoad = -1)
     {
-        StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
+        if (sceneToLoad == -1) sceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
+        StartCoroutine(LoadSceneAnim(sceneToLoad));
     }
 
-    IEnumerator LoadScene(int sceneIndex)
+
+
+    IEnumerator LoadSceneAnim(int sceneIndex)
     {
         Transition.SetTrigger("Start");
 
