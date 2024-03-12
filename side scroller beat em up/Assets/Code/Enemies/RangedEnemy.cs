@@ -22,7 +22,8 @@ public class RangedEnemy : EnemyBase
     private IEnumerator PrepareToThrow()
     {
         agent.SetDestination(transform.position);
-        Vector3 targetPosition = closestCharacter.transform.position;
+        GetRandomCharacter();
+        Vector3 targetPosition = targetCharacter.transform.position;
         yield return new WaitForSeconds(attackDelay);
         Projectile newProjectile = Instantiate(projectile, transform.TransformPoint(throwPosition), Quaternion.identity);
         newProjectile.StartProjectile(targetPosition, damage, 0.75f);
