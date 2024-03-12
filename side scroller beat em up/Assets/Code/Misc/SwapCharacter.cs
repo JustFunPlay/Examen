@@ -8,7 +8,7 @@ public class SwapCharacter : MonoBehaviour
     [SerializeField] Character selectedCharacter;
     private void OnEnable()
     {
-        if (playerSelecting == Player.player1)
+        if (playerSelecting == Player.Player1)
             GameManager.Player1Character = selectedCharacter;
         else
             GameManager.Player2Character = selectedCharacter;

@@ -72,13 +72,21 @@ public class EnemyBase : MonoBehaviour
         Character[] characters = FindObjectsOfType<Character>();
         for (int i = 0; i < characters.Length; i++)
         {
-            if (targetCharacter == null || Vector3.Distance(transform.position, characters[i].transform.position) < Vector3.Distance(transform.position, targetCharacter.transform.position))
+            if (targetCharacter == null || (Vector3.Distance(transform.position, characters[i].transform.position) < Vector3.Distance(transform.position, targetCharacter.transform.position) && characters[i].IsAlive))
                 targetCharacter = characters[i];
         }
     }
     protected void GetRandomCharacter()
     {
         Character[] characters = FindObjectsOfType<Character>();
-        targetCharacter = characters[Random.Range(0, characters.Length)];
+        int rand = Random.Range(0, characters.Length);
+        for (int i = 0; i < 10; i++)
+        {
+            if (characters[rand].IsAlive)
+                break;
+            else
+                rand = Random.Range(0, characters.Length);
+        }
+        targetCharacter = characters[rand];
     }
 }

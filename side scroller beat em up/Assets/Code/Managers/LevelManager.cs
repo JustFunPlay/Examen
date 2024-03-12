@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -8,22 +9,23 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private CameraManager cameraManager;
     [SerializeField] float worldEdgeFront, worldEdgeBack;
     private List<Character> characters = new List<Character>();
+    [SerializeField] private SceneTransition sceneTransition;
 
     [SerializeField] private EnemyWave[] enemyWaves;
     int currentWave = 0;
-
+    int defeatedPlayers = 0;
     private void Start()
     {
         characters.Add(Instantiate(GameManager.Player1Character, playerSpawnPoints[0], Quaternion.identity));
         InputManager.Instance.SetPlayer1(characters[0]);
         cameraManager.Characters.Add(characters[0]);
-        characters[0].SetWorldEdges(worldEdgeFront, worldEdgeBack);
+        characters[0].InitializeCharacter(Player.Player1, worldEdgeFront, worldEdgeBack, this);
         if (GameManager.Player2Active)
         {
             characters.Add(Instantiate(GameManager.Player2Character, playerSpawnPoints[1], Quaternion.identity));
             InputManager.Instance.SetPlayer2(characters[1]);
             cameraManager.Characters.Add(characters[1]);
-            characters[1].SetWorldEdges(worldEdgeFront, worldEdgeBack);
+            characters[1].InitializeCharacter(Player.Player2, worldEdgeFront, worldEdgeBack, this);
         }
     }
 
@@ -47,7 +49,8 @@ public class LevelManager : MonoBehaviour
         {
             enemyWaves[currentWave].enemies[i].ActivateSelf();
         }
-        if (enemyWaves[currentWave].CamLockPosition > 0) WaitToReleaseCamera(enemyWaves[currentWave].enemies, enemyWaves[currentWave].CamLockPosition);
+        if (enemyWaves[currentWave].CamLockPosition > 0)
+            WaitToReleaseCamera(enemyWaves[currentWave].enemies, enemyWaves[currentWave].CamLockPosition);
         currentWave++;
     }
 
@@ -72,6 +75,33 @@ public class LevelManager : MonoBehaviour
             }
         }
         cameraManager.ReleaseFromPosition();
+    }
+
+    public void ConfirmDefeat()
+    {
+        defeatedPlayers++;
+        if (defeatedPlayers >= characters.Count && sceneTransition != null)
+        {
+            bool retry = false;
+            if (GameManager.CheckForRevive(Player.Player1)) retry = true;
+            if (GameManager.CheckForRevive(Player.Player2)) retry = true;
+            if (retry)
+            {
+                //sceneTransition.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            else
+            {
+                //sceneTransition.LoadScene(0);
+            }
+        }
+    }
+    public void DenyDefeat()
+    {
+        defeatedPlayers--;
+    }
+    public void RemoveFromCamera(Character characterToRemove)
+    {
+        cameraManager.Characters.Remove(characterToRemove);
     }
 }
 
