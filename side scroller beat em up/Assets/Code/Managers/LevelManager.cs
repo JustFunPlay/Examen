@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Vector3[] playerSpawnPoints = new Vector3[2];
     [SerializeField] private CameraManager cameraManager;
     [SerializeField] float worldEdgeFront, worldEdgeBack;
+    [SerializeField] float levelEndDistance;
     private List<Character> characters = new List<Character>();
     [SerializeField] private SceneTransition sceneTransition;
 
@@ -42,6 +43,17 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            foreach (Character character in characters)
+            {
+                if (character.transform.position.x >= levelEndDistance)
+                {
+                    sceneTransition.LoadScene();
+                    break;
+                }
+            }
+        }
     }
     private void ActivateEnemyWave()
     {
@@ -49,8 +61,8 @@ public class LevelManager : MonoBehaviour
         {
             enemyWaves[currentWave].enemies[i].ActivateSelf();
         }
-        if (enemyWaves[currentWave].CamLockPosition > 0)
-            WaitToReleaseCamera(enemyWaves[currentWave].enemies, enemyWaves[currentWave].CamLockPosition);
+        if (enemyWaves[currentWave].CamLockPosition != -1)
+            StartCoroutine(WaitToReleaseCamera(enemyWaves[currentWave].enemies, enemyWaves[currentWave].CamLockPosition));
         currentWave++;
     }
 
@@ -64,6 +76,7 @@ public class LevelManager : MonoBehaviour
         cameraManager.LockAtPosition(positionToLockAt);
         while (livingEnemies.Count > 0)
         {
+            Debug.Log("Waiting to unlock camera");
             yield return new WaitForSeconds(0.25f);
             for (int i = 0; i < livingEnemies.Count; i++)
             {
@@ -87,11 +100,11 @@ public class LevelManager : MonoBehaviour
             if (GameManager.CheckForRevive(Player.Player2)) retry = true;
             if (retry)
             {
-                //sceneTransition.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                sceneTransition.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
             else
             {
-                //sceneTransition.LoadScene(0);
+                sceneTransition.LoadScene(0);
             }
         }
     }

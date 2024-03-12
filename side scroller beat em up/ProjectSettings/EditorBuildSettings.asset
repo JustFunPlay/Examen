@@ -9,11 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: dc2bc3b6d87138243b7a45085ce2e340
   - enabled: 1
+    path: Assets/Scenes/Politie bureau.unity
+    guid: 61b3614eea8e6d0419503779daf190b0
+  - enabled: 1
     path: Assets/Scenes/Outside.unity
     guid: beea3caed7b0b474e8ef466e399eb15f
   - enabled: 1
-    path: Assets/Scenes/Politie bureau.unity
-    guid: 61b3614eea8e6d0419503779daf190b0
+    path: Assets/Scenes/Bar.unity
+    guid: 1ecf3e101ab34cd4083a2a686a4f2836
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05

@@ -20,7 +20,16 @@ public class MeleeEnemy : EnemyBase
     {
         canAct = false;
         Debug.Log($"{gameObject.name} performs attack");
+        if (animator != null)
+        {
+            animator.SetBool("UseVariant", Random.Range(0, 2) == 0);
+            animator.SetTrigger("WindUp");
+        }
         yield return new WaitForSeconds(attackDelay);
+        if (animator != null)
+        {
+            animator.SetTrigger("Attack");
+        }
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, attackRange))
         {
             if (hit.collider.TryGetComponent<Character>(out Character character))
