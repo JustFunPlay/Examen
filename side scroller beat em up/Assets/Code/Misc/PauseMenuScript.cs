@@ -11,10 +11,10 @@ public class PauseMenuScript : MonoBehaviour
 
     public AudioSource buttonClick;
 
-    public KeyCode pauseKey;
+    //public KeyCode pauseKey;
     void Update()
     {
-        if (Input.GetButtonDown("Pause"))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (gameIsPaused)
             {

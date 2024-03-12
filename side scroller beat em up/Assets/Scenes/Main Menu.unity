@@ -36249,6 +36249,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5724606719341354477, guid: 18983781b0479cd46bd9eb38162c26d9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7490817767421976520, guid: 18983781b0479cd46bd9eb38162c26d9,
         type: 3}
       propertyPath: PostProcessVolume
@@ -36359,6 +36364,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 277532024}
+    - target: {fileID: 8892980716532934308, guid: 18983781b0479cd46bd9eb38162c26d9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8914528668667658635, guid: 18983781b0479cd46bd9eb38162c26d9,
         type: 3}
       propertyPath: m_Name
