@@ -19,16 +19,25 @@ public class EnemyBase : MonoBehaviour
     protected Animator animator;
 
     [SerializeField] protected bool canAct;
-    public bool IsAlive { get { return health > 0; } }
+    public bool IsAlive {  get; protected set; }
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         animator = GetComponent<Animator>();
+        IsAlive = true;
         //ActivateSelf();
     }
     protected virtual void Update()
     {
+        if (animator != null && agent != null && agent.velocity.magnitude > 0)
+        {
+            animator.SetBool("Walk", true);
+        }
+        else if (animator != null)
+        {
+            animator.SetBool("Walk", false);
+        }
         if (canAct && isActive)
         {
             if (agent != null && targetCharacter != null)
@@ -50,7 +59,14 @@ public class EnemyBase : MonoBehaviour
         if (health <= 0)
         {
             attacker.AddScore(scoreOnKill);
-            OnDeath();
+            if (animator != null)
+            {
+                animator.SetTrigger("Defeat");
+            }
+            if (agent != null)
+                IsAlive = false;
+            agent.enabled = false;
+            Invoke("OnDeath", 3);
         }
     }
 

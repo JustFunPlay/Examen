@@ -28,14 +28,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6732580805252835948}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6643962125863246802}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &8207661090314426908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,11 +48,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d5d231788da9b640af443231d2ee279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HeldWeapon: {fileID: 0}
   health: 100
-  lives: 3
-  score: 0
   movementSpeed: 7
   animator: {fileID: 6922567849231700737}
+  leftEdge: 0
+  rightEdge: 0
+  frontEdge: 0
+  backEdge: 0
   comboActions:
   - ComboUnit: 0
     AnimationCall: Light Attack 1

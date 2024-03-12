@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class GameManager
 {
@@ -46,5 +47,13 @@ public static class GameManager
             return Player2Score;
         }
         return -1;
+    }
+    public static void Reset()
+    {
+        Player1Lives = 3;
+        Player2Lives = 3;
+        Player1Score = 0;
+        Player2Score = 0;
+        Player2Active = false;
     }
 }

@@ -7,6 +7,7 @@ public class CameraManager : MonoBehaviour
     public List<Character> Characters = new List<Character>();
     private Vector3 cameraPosition;
     bool camIsLocked;
+    [SerializeField] private float camLimitLeft, camLimitRight;
 
     [Header("editor testing")]
     [SerializeField] bool togleLock;
@@ -38,7 +39,7 @@ public class CameraManager : MonoBehaviour
             avaragePosition += characterPositions[i];
         }
         avaragePosition /= characterPositions.Count;
-        if (!camIsLocked) cameraPosition.x = avaragePosition;
+        if (!camIsLocked) cameraPosition.x = Mathf.Clamp(avaragePosition, camLimitLeft, camLimitRight);
 
         transform.position = Vector3.Lerp(transform.position, cameraPosition, 1.2f * Time.deltaTime);
     }
@@ -47,9 +48,11 @@ public class CameraManager : MonoBehaviour
     {
         camIsLocked = true;
         cameraPosition.x = position;
+        Debug.Log("Camera has been locked");
     }
     public void ReleaseFromPosition()
     {
         camIsLocked = false;
+        Debug.Log("Camera has been released");
     }
 }
