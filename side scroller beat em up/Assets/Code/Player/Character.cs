@@ -5,13 +5,13 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public Weapon HeldWeapon;
-
+    private Player player;
+    private LevelManager levelManager;
     [SerializeField] private int health = 100;
-    [SerializeField] private int lives = 3;
-    [SerializeField] private int score;
     [SerializeField] private float movementSpeed;
     [SerializeField] private Animator animator;
-    private bool canAct = true;
+    private bool canAct;
+    public bool IsAlive { get; private set; }
     private bool isJumping;
     private float comboTime;
     private Rigidbody rb;
@@ -21,23 +21,26 @@ public class Character : MonoBehaviour
     [SerializeField] private ComboAction[] comboActions;
     [SerializeField] private ComboAction[] aerialCombos;
 
+    public void InitializeCharacter(Player player, float frontWorldEdge,  float backWorldEdge, LevelManager levelManager)
+    {
+        this.player = player;
+        frontEdge = frontWorldEdge;
+        backEdge = backWorldEdge;
+        this.levelManager = levelManager;
+        rb = GetComponent<Rigidbody>();
+        IsAlive = true;
+        canAct = true;
+    }
+
     public void SetMoveEdges(float leftEdge, float rightEdge)
     {
         this.leftEdge = leftEdge;
         this.rightEdge = rightEdge;
     }
-    public void SetWorldEdges(float frontEdge, float backEdge)
-    {
-        this.frontEdge = frontEdge;
-        this.backEdge = backEdge;
-    }
 
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
     private void Update()
     {
+        if (!IsAlive) return;
         if (canAct)
         {
             rb.MovePosition(new Vector3(Mathf.Clamp(transform.position.x + moveVector.x * movementSpeed * Time.deltaTime, leftEdge, rightEdge), transform.position.y, Mathf.Clamp(transform.position.z + moveVector.y * movementSpeed * Time.deltaTime, frontEdge, backEdge)));
@@ -58,21 +61,44 @@ public class Character : MonoBehaviour
     public void TakeDamage(int damageToDo)
     {
         health -= damageToDo;
-        if (health <= 0) OnDeath();
+        if (health <= 0 && IsAlive) OnDeath();
     }
 
     private void OnDeath()
     {
-        if (lives > 0)
-        {
-            lives--;
-            health = 100;
-        }
+        animator.SetTrigger("Death");
+        IsAlive = false;
+        canAct = false;
+        StartCoroutine(WaitToRevive());
         Debug.Log("Game over");
+    }
+    IEnumerator WaitToRevive()
+    {
+        canAct = false;
+        rb.useGravity = false;
+        GetComponent<Collider>().enabled = false;
+        yield return new WaitForSeconds(1f);
+        levelManager.ConfirmDefeat();
+        yield return new WaitForSeconds(4f);
+        if (GameManager.CheckForRevive(player))
+        {
+            levelManager.DenyDefeat();
+            animator.SetTrigger("Revive");
+            yield return new WaitForSeconds(0.5f);
+            IsAlive = true;
+            canAct = true;
+            GetComponent<Collider>().enabled = true;
+            rb.useGravity = true;
+        }
+        else
+        {
+            levelManager.RemoveFromCamera(this);
+        }
     }
 
     public void Move(Vector2 moveDirection)
     {
+        if (!IsAlive) return;
         if (moveDirection.x > 0)
             transform.LookAt(transform.position + Vector3.right);
         else if (moveDirection.x < 0)
@@ -81,7 +107,7 @@ public class Character : MonoBehaviour
     }
     public void Attack(AttackType attackType)
     {
-        if (canAct)
+        if (canAct && IsAlive)
         {
             ComboAction activeCombo = null;
             if (isJumping)
@@ -207,11 +233,12 @@ public class Character : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         yield return new WaitForSeconds(attackTime * 0.25f);
         comboTime = 1f;
+        if (IsAlive)
         canAct = true;
     }
     public void Jump()
     {
-        if (!canAct || isJumping) return;
+        if (!canAct || isJumping || !IsAlive) return;
         rb.AddForce(transform.up * 5, ForceMode.VelocityChange);
         if (animator != null) animator.SetBool("Jump", true);
         isJumping = true;
@@ -219,7 +246,7 @@ public class Character : MonoBehaviour
 
     public void AddScore(int scoreToAdd)
     {
-        score += scoreToAdd;
+        int score = GameManager.AddScoreToPlayer(player, scoreToAdd);
         Debug.Log($"{gameObject.name} earned {scoreToAdd} points, for a total of {score}");
     }
 

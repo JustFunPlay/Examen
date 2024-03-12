@@ -17,7 +17,7 @@ public class SwitchInput : MonoBehaviour
         controllerVisual.SetActive(false);
 
         InputType selectedInputtype = new InputType();
-        if (inputPlayer == Player.player1)
+        if (inputPlayer == Player.Player1)
             selectedInputtype = InputManager.Instance.SetPlayer1NextInput();
         else
             selectedInputtype = InputManager.Instance.SetPlayer2NextInput();
@@ -37,4 +37,4 @@ public class SwitchInput : MonoBehaviour
     }
 }
 
-    public enum Player { player1, player2 };
+    public enum Player { Player1, Player2 };
