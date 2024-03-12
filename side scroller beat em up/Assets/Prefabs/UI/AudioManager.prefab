@@ -45,59 +45,139 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: sas
-    clip: {fileID: 0}
-    group: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
+  - Name: Attack1
+    Clip: {fileID: 8300000, guid: a87fcf0f80a40844dbd94f659ad6b068, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 0.82
+    Pitch: 1.05
+    Loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    group: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
+  - Name: Attack2
+    Clip: {fileID: 8300000, guid: a87fcf0f80a40844dbd94f659ad6b068, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 0.82
+    Pitch: 1.44
+    Loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    group: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
+  - Name: Attack3
+    Clip: {fileID: 8300000, guid: a87fcf0f80a40844dbd94f659ad6b068, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 1
+    Pitch: 0.88
+    Loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    group: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
+  - Name: Attack4
+    Clip: {fileID: 8300000, guid: 6e40225914b97e540a8d59cd2d949d9c, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    group: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
+  - Name: Attack5
+    Clip: {fileID: 8300000, guid: 6e40225914b97e540a8d59cd2d949d9c, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 1
+    Pitch: 0.88
+    Loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    group: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
+  - Name: Attack6
+    Clip: {fileID: 8300000, guid: 6e40225914b97e540a8d59cd2d949d9c, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 1
+    Pitch: 1.27
+    Loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    group: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
+  - Name: Kick1
+    Clip: {fileID: 8300000, guid: 6c2e74c59daedeb4781f63e46348021a, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 0.93
+    Pitch: 1
+    Loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    group: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
+  - Name: Kick2
+    Clip: {fileID: 8300000, guid: ec874d184db43ca4db454f9fc4d1e607, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    source: {fileID: 0}
+  - Name: Kick3
+    Clip: {fileID: 8300000, guid: ec874d184db43ca4db454f9fc4d1e607, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 0.93
+    Pitch: 1.18
+    Loop: 0
+    source: {fileID: 0}
+  - Name: Walk1
+    Clip: {fileID: 8300000, guid: 43ce2719980d35d449cf1a216e455704, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 0.19
+    Pitch: 1.23
+    Loop: 0
+    source: {fileID: 0}
+  - Name: Walk2
+    Clip: {fileID: 8300000, guid: 43ce2719980d35d449cf1a216e455704, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 0.15
+    Pitch: 1.44
+    Loop: 0
+    source: {fileID: 0}
+  - Name: Walk3
+    Clip: {fileID: 8300000, guid: 43ce2719980d35d449cf1a216e455704, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 0.18
+    Pitch: 1.05
+    Loop: 0
+    source: {fileID: 0}
+  - Name: Silly1
+    Clip: {fileID: 8300000, guid: 43ce2719980d35d449cf1a216e455704, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 0.76
+    Pitch: 1.05
+    Loop: 0
+    source: {fileID: 0}
+  - Name: Silly2
+    Clip: {fileID: 8300000, guid: 43ce2719980d35d449cf1a216e455704, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 0.7
+    Pitch: 1.05
+    Loop: 0
+    source: {fileID: 0}
+  - Name: Silly3
+    Clip: {fileID: 8300000, guid: 43ce2719980d35d449cf1a216e455704, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 0.76
+    Pitch: 1.05
+    Loop: 0
+    source: {fileID: 0}
+  - Name: Woosh1
+    Clip: {fileID: 8300000, guid: 0b06a182b0cbe6c4cb7307394b7bea46, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 0.76
+    Pitch: 1.05
+    Loop: 0
+    source: {fileID: 0}
+  - Name: Woosh2
+    Clip: {fileID: 8300000, guid: 15f75051878d04f48acbb8847461bb2f, type: 3}
+    Group: {fileID: -6912067792254242344, guid: 4c0a7a16bf9b65c469e9cd34ec6d3e20,
+      type: 2}
+    Volume: 0.76
+    Pitch: 0.97
+    Loop: 0
     source: {fileID: 0}
