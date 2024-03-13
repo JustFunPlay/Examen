@@ -205,8 +205,10 @@ MonoBehaviour:
   scoreOnHit: 5
   scoreOnKill: 75
   isActive: 0
+  HitSound: []
+  HitEffect: {fileID: 0}
   canAct: 0
   moveDistance: 2
-  projectile: {fileID: 8141056592143858328, guid: afd8baac45e5dd34bacee193714f4e26,
+  projectile: {fileID: 2303327573659797538, guid: afd8baac45e5dd34bacee193714f4e26,
     type: 3}
   throwPosition: {x: 5.684342e-14, y: -0.00000047683716, z: 0.000000029802322}
