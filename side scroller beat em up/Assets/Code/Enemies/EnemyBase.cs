@@ -18,6 +18,9 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected bool isActive;
     protected Animator animator;
 
+    public AudioSource[] HitSound;
+    public GameObject HitEffect;
+
     [SerializeField] protected bool canAct;
     public bool IsAlive {  get; protected set; }
     protected virtual void Start()
@@ -56,6 +59,19 @@ public class EnemyBase : MonoBehaviour
         health -= damageToDo;
         Debug.Log($"{gameObject.name} took {damageToDo} damage");
         attacker.AddScore(scoreOnHit);
+        
+        //play random hit sound
+        if (HitSound.Length == 0)
+        {
+            return;
+        }
+        int index = Random.Range(0, HitSound.Length - 1);
+        HitSound[index].Play();
+        HitSound[index].pitch = Random.Range(0.8f, 1.3f);
+
+        //instantiate hit effect particle
+        GameObject.Instantiate(HitEffect, transform.position, transform.rotation);
+
         if (health <= 0)
         {
             attacker.AddScore(scoreOnKill);
