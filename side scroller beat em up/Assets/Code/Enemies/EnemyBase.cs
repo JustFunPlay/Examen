@@ -82,6 +82,7 @@ public class EnemyBase : MonoBehaviour
             if (agent != null)
                 IsAlive = false;
             agent.enabled = false;
+            GetComponent<Collider>().enabled = false;
             Invoke("OnDeath", 3);
         }
     }

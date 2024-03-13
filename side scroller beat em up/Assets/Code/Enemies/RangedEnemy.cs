@@ -23,8 +23,19 @@ public class RangedEnemy : EnemyBase
     {
         agent.SetDestination(transform.position);
         GetRandomCharacter();
+
         Vector3 targetPosition = targetCharacter.transform.position;
+        Debug.Log($"{gameObject.name} performs attack");
+        if (animator != null)
+        {
+            animator.SetBool("UseVariant", Random.Range(0, 2) == 0);
+            animator.SetTrigger("WindUp");
+        }
         yield return new WaitForSeconds(attackDelay);
+        if (animator != null)
+        {
+            animator.SetTrigger("Attack");
+        }
         Projectile newProjectile = Instantiate(projectile, transform.TransformPoint(throwPosition), Quaternion.identity);
         newProjectile.StartProjectile(targetPosition, damage, 0.75f);
         yield return new WaitForSeconds(attackDelay);
