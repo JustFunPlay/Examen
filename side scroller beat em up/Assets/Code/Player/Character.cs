@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,7 @@ public class Character : MonoBehaviour
     private List<AttackType> currentCombo = new List<AttackType>();
     [SerializeField] private ComboAction[] comboActions;
     [SerializeField] private ComboAction[] aerialCombos;
+    public Action<int> OnChangeHealth;
 
     public void InitializeCharacter(Player player, float frontWorldEdge,  float backWorldEdge, LevelManager levelManager)
     {
@@ -61,6 +63,7 @@ public class Character : MonoBehaviour
     public void TakeDamage(int damageToDo)
     {
         health -= damageToDo;
+        OnChangeHealth.Invoke(health);
         if (health <= 0 && IsAlive) OnDeath();
     }
 
@@ -77,21 +80,23 @@ public class Character : MonoBehaviour
         canAct = false;
         rb.useGravity = false;
         GetComponent<Collider>().enabled = false;
-        yield return new WaitForSeconds(1f);
-        levelManager.ConfirmDefeat();
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(1.5f);
+        //yield return new WaitForSeconds(4f);
         if (GameManager.CheckForRevive(player))
         {
-            levelManager.DenyDefeat();
+            //levelManager.DenyDefeat();
             animator.SetTrigger("Revive");
             yield return new WaitForSeconds(0.5f);
             IsAlive = true;
             canAct = true;
+            health = 100;
+            OnChangeHealth.Invoke(health);
             GetComponent<Collider>().enabled = true;
             rb.useGravity = true;
         }
         else
         {
+            levelManager.ConfirmDefeat();
             levelManager.RemoveFromCamera(this);
         }
     }

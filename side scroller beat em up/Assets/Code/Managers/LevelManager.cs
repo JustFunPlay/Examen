@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] float levelEndDistance;
     private List<Character> characters = new List<Character>();
     [SerializeField] private SceneTransition sceneTransition;
+    [SerializeField] private PlayerUIManager player1UI, player2UI;
 
     [SerializeField] private EnemyWave[] enemyWaves;
     int currentWave = 0;
@@ -21,12 +22,14 @@ public class LevelManager : MonoBehaviour
         InputManager.Instance.SetPlayer1(characters[0]);
         cameraManager.Characters.Add(characters[0]);
         characters[0].InitializeCharacter(Player.Player1, worldEdgeFront, worldEdgeBack, this);
+        player1UI.OnSetup(characters[0]);
         if (GameManager.Player2Active)
         {
             characters.Add(Instantiate(GameManager.Player2Character, playerSpawnPoints[1], Quaternion.identity));
             InputManager.Instance.SetPlayer2(characters[1]);
             cameraManager.Characters.Add(characters[1]);
             characters[1].InitializeCharacter(Player.Player2, worldEdgeFront, worldEdgeBack, this);
+            player2UI.OnSetup(characters[1]);
         }
     }
 

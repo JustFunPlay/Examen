@@ -2066,9 +2066,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1775605474413719214}
   m_Direction: 1
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 0.75
+  m_MaxValue: 100
+  m_WholeNumbers: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9629,6 +9629,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 36248009291463089}
+  - component: {fileID: 8696060084338201778}
   m_Layer: 5
   m_Name: Player 2 UI
   m_TagString: Untagged
@@ -9660,6 +9661,22 @@ RectTransform:
   m_AnchoredPosition: {x: 334.55, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8696060084338201778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2742077784874816190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ffcbac68f327a74eb074eb43bc597cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 0
+  scoreText: {fileID: 510113126870601974}
+  livesText: {fileID: 1807109505233280842}
+  healthSlider: {fileID: 2091603660881161715}
 --- !u!1 &2756270739662288387
 GameObject:
   m_ObjectHideFlags: 0
@@ -17551,6 +17568,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7495250754596489912}
+  - component: {fileID: 5154722706611986707}
   m_Layer: 5
   m_Name: Player 1 UI
   m_TagString: Untagged
@@ -17582,6 +17600,22 @@ RectTransform:
   m_AnchoredPosition: {x: -334.55002, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5154722706611986707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341371744382377613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ffcbac68f327a74eb074eb43bc597cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 0
+  scoreText: {fileID: 2969573601338325540}
+  livesText: {fileID: 7693999652867871990}
+  healthSlider: {fileID: 4804763668558909086}
 --- !u!1 &5349432404749950520
 GameObject:
   m_ObjectHideFlags: 0
@@ -23049,9 +23083,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3651651807834034238}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 0.75
+  m_MaxValue: 100
+  m_WholeNumbers: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

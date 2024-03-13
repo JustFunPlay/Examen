@@ -2163,29 +2163,7 @@ MonoBehaviour:
   worldEdgeBack: 2.5
   levelEndDistance: 96
   sceneTransition: {fileID: 637935904}
-  enemyWaves:
-  - TriggerDistance: 8
-    enemies:
-    - {fileID: 0}
-    CamLockPosition: -1
-  - TriggerDistance: 22.5
-    enemies:
-    - {fileID: 0}
-    - {fileID: 0}
-    CamLockPosition: 23
-  - TriggerDistance: 50
-    enemies:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    CamLockPosition: -1
-  - TriggerDistance: 87.5
-    enemies:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    CamLockPosition: 90
+  enemyWaves: []
 --- !u!4 &523939114
 Transform:
   m_ObjectHideFlags: 0

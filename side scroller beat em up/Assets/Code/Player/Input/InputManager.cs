@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
     public Character Player1;
     public Character Player2;
     InputType player1Input;
-    InputType player2Input;
+    InputType player2Input = InputType.ArrowKeys;
     [Header("WASD input")]
     [SerializeField] private InputAction wasdMoveInteraction;
     [SerializeField] private InputAction wasdJumpInteraction;
@@ -36,7 +36,7 @@ public class InputManager : MonoBehaviour
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
         BindPlayer1();
-        if (Player2 != null) BindPlayer2();
+        BindPlayer2();
     }
     private void Update()
     {
