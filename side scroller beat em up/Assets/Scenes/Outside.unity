@@ -2165,6 +2165,8 @@ MonoBehaviour:
   worldEdgeBack: 2.5
   levelEndDistance: 96
   sceneTransition: {fileID: 637935904}
+  player1UI: {fileID: 0}
+  player2UI: {fileID: 0}
   enemyWaves: []
 --- !u!4 &523939114
 Transform:
