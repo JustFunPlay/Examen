@@ -9636,7 +9636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &36248009291463089
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9677,6 +9677,7 @@ MonoBehaviour:
   scoreText: {fileID: 510113126870601974}
   livesText: {fileID: 1807109505233280842}
   healthSlider: {fileID: 2091603660881161715}
+  icon: {fileID: 5136363847492469695}
 --- !u!1 &2756270739662288387
 GameObject:
   m_ObjectHideFlags: 0
@@ -17575,7 +17576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7495250754596489912
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17616,6 +17617,7 @@ MonoBehaviour:
   scoreText: {fileID: 2969573601338325540}
   livesText: {fileID: 7693999652867871990}
   healthSlider: {fileID: 4804763668558909086}
+  icon: {fileID: 26927428239106427}
 --- !u!1 &5349432404749950520
 GameObject:
   m_ObjectHideFlags: 0

@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeldWeapon: {fileID: 0}
   health: 100
-  movementSpeed: 7
+  movementSpeed: 5
   animator: {fileID: 6922567849231700737}
   leftEdge: 0
   rightEdge: 0
@@ -122,6 +122,7 @@ MonoBehaviour:
     HitboxEnd: {x: 0, y: 1.5, z: 1}
     HitboxRadius: 0.5
     FollowUpActions: []
+  iconRender: {fileID: 8400000, guid: d705577406542af49b4d974d2cf377c1, type: 2}
 --- !u!136 &902451806131273929
 CapsuleCollider:
   m_ObjectHideFlags: 0

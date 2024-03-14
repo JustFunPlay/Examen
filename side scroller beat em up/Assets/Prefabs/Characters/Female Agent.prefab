@@ -3264,7 +3264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeldWeapon: {fileID: 0}
   health: 100
-  movementSpeed: 7
+  movementSpeed: 5
   animator: {fileID: 5209023112137079058}
   leftEdge: 0
   rightEdge: 0
@@ -3336,6 +3336,7 @@ MonoBehaviour:
     HitboxEnd: {x: 0, y: 1, z: 1}
     HitboxRadius: 0.5
     FollowUpActions: []
+  iconRender: {fileID: 8400000, guid: 50f35192a1cb01348a49edde21b9c7ef, type: 2}
 --- !u!95 &5209023112137079058
 Animator:
   serializedVersion: 5

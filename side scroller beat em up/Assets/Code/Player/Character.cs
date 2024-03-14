@@ -22,6 +22,7 @@ public class Character : MonoBehaviour
     [SerializeField] private ComboAction[] comboActions;
     [SerializeField] private ComboAction[] aerialCombos;
     public Action<int> OnChangeHealth;
+    public RenderTexture iconRender;
 
     public void InitializeCharacter(Player player, float frontWorldEdge,  float backWorldEdge, LevelManager levelManager)
     {
@@ -62,9 +63,10 @@ public class Character : MonoBehaviour
 
     public void TakeDamage(int damageToDo)
     {
+        if (!IsAlive) return;
         health -= damageToDo;
         OnChangeHealth.Invoke(health);
-        if (health <= 0 && IsAlive) OnDeath();
+        if (health <= 0) OnDeath();
     }
 
     private void OnDeath()
@@ -87,12 +89,13 @@ public class Character : MonoBehaviour
             //levelManager.DenyDefeat();
             animator.SetTrigger("Revive");
             yield return new WaitForSeconds(0.5f);
-            IsAlive = true;
             canAct = true;
             health = 100;
             OnChangeHealth.Invoke(health);
             GetComponent<Collider>().enabled = true;
             rb.useGravity = true;
+            yield return new WaitForSeconds(0.5f);
+            IsAlive = true;
         }
         else
         {
