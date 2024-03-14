@@ -179,7 +179,8 @@ MonoBehaviour:
   scoreOnKill: 100
   isActive: 0
   HitSound: []
-  HitEffect: {fileID: 0}
+  HitEffect: {fileID: 2018083716358902364, guid: 8f2b5e63573decf46a01255dd910f7ef,
+    type: 3}
   canAct: 0
 --- !u!195 &3050058626091295240
 NavMeshAgent:

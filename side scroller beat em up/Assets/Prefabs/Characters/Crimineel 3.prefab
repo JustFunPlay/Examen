@@ -206,7 +206,8 @@ MonoBehaviour:
   scoreOnKill: 75
   isActive: 0
   HitSound: []
-  HitEffect: {fileID: 0}
+  HitEffect: {fileID: 2018083716358902364, guid: 8f2b5e63573decf46a01255dd910f7ef,
+    type: 3}
   canAct: 0
   moveDistance: 2
   projectile: {fileID: 2303327573659797538, guid: afd8baac45e5dd34bacee193714f4e26,
