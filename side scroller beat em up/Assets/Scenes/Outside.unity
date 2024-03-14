@@ -2735,7 +2735,6 @@ MonoBehaviour:
     - {fileID: 320861251}
     - {fileID: 91499445}
     - {fileID: 1482053695}
-    - {fileID: 1242807457}
     CamLockPosition: 90
 --- !u!4 &523939114
 Transform:
@@ -6764,6 +6763,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crimineel 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6070559624882481056, guid: 2e15eec358cbda74da3416ff7b145291,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6878445221831687450, guid: 2e15eec358cbda74da3416ff7b145291,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6825,18 +6829,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1242807455}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1242807457 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6101700345032453772, guid: 2e15eec358cbda74da3416ff7b145291,
-    type: 3}
-  m_PrefabInstance: {fileID: 1242807455}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d7b00a458be309449ce6bdc8308a0dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1244169655
 PrefabInstance:
   m_ObjectHideFlags: 0
