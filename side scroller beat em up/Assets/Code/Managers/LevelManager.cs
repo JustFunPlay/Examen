@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] float levelEndDistance;
     private List<Character> characters = new List<Character>();
     [SerializeField] private SceneTransition sceneTransition;
+    [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private PlayerUIManager player1UI, player2UI;
 
     [SerializeField] private EnemyWave[] enemyWaves;
@@ -107,7 +108,7 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
-                sceneTransition.LoadScene(0);
+                gameOverScreen.SetActive(true);
             }
         }
     }

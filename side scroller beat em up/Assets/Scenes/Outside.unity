@@ -2698,6 +2698,7 @@ MonoBehaviour:
   worldEdgeBack: 2.5
   levelEndDistance: 96
   sceneTransition: {fileID: 637935904}
+  gameOverScreen: {fileID: 1436555070}
   player1UI: {fileID: 1436555069}
   player2UI: {fileID: 1436555068}
   enemyWaves:
@@ -8601,6 +8602,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ffcbac68f327a74eb074eb43bc597cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1436555070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7632053870957723999, guid: 18983781b0479cd46bd9eb38162c26d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1436555067}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1482053693
 PrefabInstance:
   m_ObjectHideFlags: 0
