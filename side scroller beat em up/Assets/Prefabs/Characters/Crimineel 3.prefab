@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   damage: 15
-  attackRange: 1.5
+  attackRange: 4
   attackDelay: 1.5
   scoreOnHit: 5
   scoreOnKill: 75

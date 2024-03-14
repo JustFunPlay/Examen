@@ -27,7 +27,7 @@ public static class GameManager
             if (Player1Lives > 0)
             {
                 Player1Lives--;
-                OnChangeLives.Invoke();
+                OnChangeLives?.Invoke();
                 return true;
             }
         }
@@ -36,7 +36,7 @@ public static class GameManager
             if (Player2Lives > 0)
             {
                 Player2Lives--;
-                OnChangeLives.Invoke();
+                OnChangeLives?.Invoke();
                 return true;
             }
         }
@@ -49,10 +49,10 @@ public static class GameManager
             if (Player1Score % extraLiveThreshold > (Player1Score+scoreToAdd) % extraLiveThreshold)
             {
                 Player1Lives++;
-                OnChangeLives.Invoke();
+                OnChangeLives?.Invoke();
             }
             Player1Score += scoreToAdd;
-            OnChangeScore.Invoke();
+            OnChangeScore?.Invoke();
             return Player1Score;
         }
         else if (player == Player.Player2)
@@ -60,10 +60,10 @@ public static class GameManager
             if (Player2Score % extraLiveThreshold > (Player2Score + scoreToAdd) % extraLiveThreshold)
             {
                 Player2Lives++;
-                OnChangeLives.Invoke();
+                OnChangeLives?.Invoke();
             }
             Player2Score += scoreToAdd;
-            OnChangeScore.Invoke();
+            OnChangeScore?.Invoke();
             return Player2Score;
         }
         return -1;
