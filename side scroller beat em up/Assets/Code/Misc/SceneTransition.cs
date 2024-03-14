@@ -11,6 +11,7 @@ public class SceneTransition : MonoBehaviour
 
     public void LoadScene(int sceneToLoad = -1)
     {
+        Transition.SetTrigger("Start");
         if (sceneToLoad == -1) sceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
         StartCoroutine(LoadSceneAnim(sceneToLoad));
     }
