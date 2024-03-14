@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player1: {fileID: 0}
+  Player2: {fileID: 0}
   wasdMoveInteraction:
     m_Name: Wasd Move Interaction
     m_Type: 0
@@ -312,5 +313,38 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Arrow Key Heavy Attack Interaction
       m_Flags: 0
+    m_Flags: 0
+  devToNextScene:
+    m_Name: Dev To Next Scene
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 07fd61a8-babe-414d-8690-3cc1c27650ce
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: One Modifier
+      m_Id: f797d1d3-f1a4-42a9-ae26-08e0249977ee
+      m_Path: OneModifier
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Dev To Next Scene
+      m_Flags: 4
+    - m_Name: modifier
+      m_Id: 08680b75-f378-4bad-998d-d738bef8b48a
+      m_Path: <Keyboard>/shift
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Dev To Next Scene
+      m_Flags: 8
+    - m_Name: binding
+      m_Id: 53afdb9c-a219-4706-b5b3-c3e162e95832
+      m_Path: <Keyboard>/enter
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Dev To Next Scene
+      m_Flags: 8
     m_Flags: 0
   ChangePlayer1Input: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class InputManager : MonoBehaviour
     [SerializeField] private InputAction arrowKeyLightAttackInteraction;
     [SerializeField] private InputAction arrowKeyHeavyAttackInteraction;
 
+    [SerializeField] private InputAction devToNextScene;
+
     [Header("editor testing")]
     public bool ChangePlayer1Input;
 
@@ -37,6 +40,7 @@ public class InputManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         BindPlayer1();
         BindPlayer2();
+        devToNextScene.performed += GoToNextScene;
     }
     private void Update()
     {
@@ -45,6 +49,11 @@ public class InputManager : MonoBehaviour
             SetPlayer1NextInput();
             ChangePlayer1Input = false;
         }
+    }
+
+    private void GoToNextScene(InputAction.CallbackContext callbackContext)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void SetPlayer1(Character player1Character)
