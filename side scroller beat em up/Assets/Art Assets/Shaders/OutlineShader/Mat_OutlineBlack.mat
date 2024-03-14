@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OutlineTest
+  m_Name: Mat_OutlineBlack
   m_Shader: {fileID: -6465566751694194690, guid: 1f7211dfb7beada4eb734a729d6a6897,
     type: 3}
   m_Parent: {fileID: 0}
@@ -51,10 +51,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _OutlineThickness: 0.02
+    - _OutlineThickness: 0.01
     - _OutlineToggle: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _OutlineColor: {r: 1, g: 1, b: 1, a: 0}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

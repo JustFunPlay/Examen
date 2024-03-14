@@ -9748,7 +9748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ffcbac68f327a74eb074eb43bc597cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: 0
+  player: 1
   scoreText: {fileID: 510113126870601974}
   livesText: {fileID: 1807109505233280842}
   healthSlider: {fileID: 2091603660881161715}

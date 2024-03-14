@@ -12,7 +12,7 @@ public class RangedEnemy : EnemyBase
     {
         if (canAct)
         {
-            if (Vector3.Distance(transform.position, agent.destination) <= 1.5f * agent.baseOffset + 0.5f)
+            if (Vector3.Distance(transform.position, agent.destination) <= 1.5f + agent.baseOffset)
             {
                 canAct = false;
                 StartCoroutine(PrepareToThrow());
