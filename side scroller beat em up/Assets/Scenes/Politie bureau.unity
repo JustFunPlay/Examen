@@ -1951,7 +1951,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -2025,6 +2025,7 @@ MonoBehaviour:
   worldEdgeBack: 0
   levelEndDistance: 22
   sceneTransition: {fileID: 1621169730}
+  gameOverScreen: {fileID: 0}
   player1UI: {fileID: 1880247255}
   player2UI: {fileID: 1880247254}
   enemyWaves: []
