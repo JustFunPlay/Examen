@@ -100,6 +100,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2264ecdaf6d26be4e888773914aa198c,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 6101700345032453772}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2264ecdaf6d26be4e888773914aa198c,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 7113896044460999421}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2264ecdaf6d26be4e888773914aa198c,
         type: 3}
@@ -109,10 +113,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 223459466140363207}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2264ecdaf6d26be4e888773914aa198c,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6101700345032453772}
   m_SourcePrefab: {fileID: 100100000, guid: 2264ecdaf6d26be4e888773914aa198c, type: 3}
 --- !u!1 &6070559624882481056 stripped
 GameObject:
@@ -120,6 +120,33 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6413015923195632369}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6101700345032453772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6070559624882481056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d7b00a458be309449ce6bdc8308a0dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  damage: 15
+  attackRange: 1.5
+  attackDelay: 1.5
+  scoreOnHit: 5
+  scoreOnKill: 75
+  isActive: 0
+  HitSound: []
+  HitEffect: {fileID: 2018083716358902364, guid: 8f2b5e63573decf46a01255dd910f7ef,
+    type: 3}
+  canAct: 0
+  moveDistance: 2
+  projectile: {fileID: 2303327573659797538, guid: afd8baac45e5dd34bacee193714f4e26,
+    type: 3}
+  throwPosition: {x: 5.684342e-14, y: -0.00000047683716, z: 0.000000029802322}
 --- !u!136 &7113896044460999421
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -152,7 +179,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6070559624882481056}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -186,30 +213,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6101700345032453772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6070559624882481056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d7b00a458be309449ce6bdc8308a0dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 50
-  damage: 15
-  attackRange: 1.5
-  attackDelay: 1.5
-  scoreOnHit: 5
-  scoreOnKill: 75
-  isActive: 0
-  HitSound: []
-  HitEffect: {fileID: 2018083716358902364, guid: 8f2b5e63573decf46a01255dd910f7ef,
-    type: 3}
-  canAct: 0
-  moveDistance: 2
-  projectile: {fileID: 2303327573659797538, guid: afd8baac45e5dd34bacee193714f4e26,
-    type: 3}
-  throwPosition: {x: 5.684342e-14, y: -0.00000047683716, z: 0.000000029802322}
