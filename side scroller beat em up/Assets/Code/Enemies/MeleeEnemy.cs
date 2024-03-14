@@ -8,10 +8,10 @@ public class MeleeEnemy : EnemyBase
     {
         if (canAct)
         {
-            if (Vector3.Distance(transform.position, agent.destination) <= 0.1f + agent.baseOffset)
+            if (Vector3.Distance(transform.position, agent.destination) <= 1.5f * agent.baseOffset)
             {
                 int r = Random.Range(0, 100);
-                Debug.Log($"r = {r}");
+                //Debug.Log($"r = {r}");
                 if (r <= 3) StartCoroutine(Attack());
             }
         }

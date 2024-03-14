@@ -18,6 +18,8 @@ public static class GameManager
     public static Action OnChangeScore;
     public static Action OnChangeLives;
 
+    private const int extraLiveThreshold = 500;
+
     public static bool CheckForRevive(Player player)
     {
         if (player == Player.Player1)
@@ -44,12 +46,22 @@ public static class GameManager
     {
         if (player == Player.Player1)
         {
+            if (Player1Score % extraLiveThreshold > (Player1Score+scoreToAdd) % extraLiveThreshold)
+            {
+                Player1Lives++;
+                OnChangeLives.Invoke();
+            }
             Player1Score += scoreToAdd;
             OnChangeScore.Invoke();
             return Player1Score;
         }
         else if (player == Player.Player2)
         {
+            if (Player2Score % extraLiveThreshold > (Player2Score + scoreToAdd) % extraLiveThreshold)
+            {
+                Player2Lives++;
+                OnChangeLives.Invoke();
+            }
             Player2Score += scoreToAdd;
             OnChangeScore.Invoke();
             return Player2Score;

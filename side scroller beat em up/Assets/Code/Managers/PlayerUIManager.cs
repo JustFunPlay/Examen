@@ -9,10 +9,12 @@ public class PlayerUIManager : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI scoreText;
     [SerializeField] private TMPro.TextMeshProUGUI livesText;
     [SerializeField] private Slider healthSlider;
+    [SerializeField] private RawImage icon;
 
     public void OnSetup(Character character)
     {
         character.OnChangeHealth = UpdateHealthSlider;
+        icon.texture = character.iconRender;
         gameObject.SetActive(true);
     }
     private void Start()
